@@ -1,0 +1,189 @@
+/* ===== 미니멀 베이스 ===== */
+:root{
+  /* 라이트 */
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #111827;      /* 거의 검정 */
+  --muted: #6b7280;     /* 회색 텍스트 */
+  --line: #e5e7eb;      /* 라인/보더 */
+  --brand: #111827;     /* 링크/포커스는 단색 */
+
+  --radius: 10px;
+  --container: 920px;
+  --gap: 20px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b0f14;
+    --surface: #0b0f14;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --line: #1f2937;
+    --brand: #e5e7eb;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR",
+               Roboto, "Segoe UI", "맑은 고딕", "Nanum Gothic", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: -0.2px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* 레이아웃 */
+.container{
+  width: min(100%, var(--container));
+  margin: 0 auto;
+  padding: 0 20px;
+}
+main.container { padding-top: 24px; }
+
+section{ margin: 72px 0; }
+.section-title{
+  margin: 0 0 8px;
+  font-size: clamp(22px, 2.2vw + 12px, 32px);
+  font-weight: 800;
+}
+.section-desc{ margin: 0; color: var(--muted); }
+
+/* ===== 헤더/내비: 선 + 여백만 ===== */
+header{
+  position: sticky; top: 0; z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.nav{
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo{
+  font-weight: 800; letter-spacing: -0.02em; font-size: 16px;
+}
+nav a{
+  text-decoration: none;
+  color: var(--text);
+  margin-left: 16px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+nav a:hover{ border-color: var(--line); }
+
+/* ===== 소개 ===== */
+#about{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+/* ===== 스킬: 두 열 그리드 + 칩은 라인만 ===== */
+#skills{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+#skills .Skill-title{
+  margin: 0 0 10px;
+  font-size: 18px; font-weight: 800;
+}
+#skills > div{
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 8px 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+#skills > div:first-of-type{ border-top: 0; }
+
+#skills h3{
+  margin: 0;
+  font-size: 12px; font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase; letter-spacing: .06em;
+}
+#skills ul{
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+#skills li{
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 13px; font-weight: 600;
+}
+
+/* 오탈자 클래스 대응 */
+.fornt-end h3, .front-end h3, .language h3, .back-end h3, .devops h3{ color: var(--muted); }
+
+/* ===== 프로젝트: 카드는 평면, 선만 사용 ===== */
+#projects{ display: grid; gap: var(--gap); }
+.project-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gap);
+}
+.project-card{
+  grid-column: span 12;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.project-title{
+  margin: 0 0 6px;
+  font-size: 18px; font-weight: 800;
+}
+.project-meta{
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+}
+.badge{
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 12px; font-weight: 700;
+}
+
+/* ===== 연락처 ===== */
+#contact{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+#contact p{ margin: 6px 0; }
+.contact-github a{
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ===== 푸터 ===== */
+footer{
+  margin: 56px 0 28px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ===== 상태/접근성 ===== */
+a, button { cursor: pointer; }
+:focus-visible{
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+/* ===== 반응형 ===== */
+@media (min-width: 720px){
+  .project-card{ grid-column: span 6; }
+}
+@media (min-width: 1024px){
+  .project-card{ grid-column: span 4; }
+}

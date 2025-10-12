@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>포트폴리오 · 당신의 이름</title>
+  <meta name="description" content="소프트웨어 엔지니어 당신의 이름의 포트폴리오. 프로젝트, 기술 스택, 경력과 연락처 정보를 확인하세요." />
+  <meta name="author" content="당신의 이름" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">이현수 포트폴리오</div>
+      <nav>
+        <a href="#about">소개</a>
+        <a href="#skills">기술</a>
+        <a href="#projects">프로젝트</a>
+        <!-- <a href="#experience">경력</a> -->
+        <a href="#contact">연락처</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 자기소개 -->
+  <main class="container">
+    <section id="about">
+      <h2 class="section-title">소개</h2>
+      <p class="section-desc">안녕하세요, 백엔드 개발자 이현수입니다.</p>
+    </section>
+
+    <!-- 기술 스택 -->
+    <section id="skills">
+      <h1 class="Skill-title">Skill</h1>
+      <div>
+      <ul class="language"><h3>Language</h3>
+        <li>JavaScript</li>
+        <li>Java</li>
+      </ul>
+      </div>
+      <div>
+      <ul class="fornt-end"><h3>Front-End</h3>
+        <li>JavaScript</li>
+        <li>React</li>
+      </ul>
+      </div>
+      <div>
+      <ul class="back-end"><h3>Back-End</h3>
+        <li>Spring</li>
+        <li>Spring Boot</li>
+        <li>JPA</li>
+        <li>Node.js</li>
+      </ul>
+      </div>
+      <div>
+      <ul class="devops"><h3>Dev Ops</h3>
+        <li>MySQL</li>
+        <li>MariaDB</li>
+        <li>Git</li>
+        <li>GitHub</li>
+        <li>Docker</li>
+        <li>AWS</li>
+        <li>Kubernetes</li>
+      </ul>
+      </div>
+    </section>
+
+    <!-- 프로젝트 -->
+    <section id="projects">
+      <h1 class="section-title">프로젝트</h1>
+      <div class="project-grid">
+  <article class="project-card">
+    <h3 class="project-title">EatToday_Backend</h3>
+    <p>Spring Boot 3 + JPA/MyBatis 기반 SNS형 백엔드. DM/팔로우/포토리뷰 등 도메인 분리(CQRS) 적용.</p>
+    <div class="project-meta">
+      <span class="badge">Spring Boot</span>
+      <span class="badge">JPA</span>
+      <span class="badge">MyBatis</span>
+      <span class="badge">MariaDB</span>
+      <span class="badge">Docker</span>
+    </div>
+  </article>
+</div>
+    </section>
+
+    <!-- 경력 -->
+    <section id="experience">
+    </section>
+
+    <!-- 연락처 -->
+    <section id="contact">
+      <p class="contact-github"></p> 
+      <p class="contact-email">이메일: dlgustn4125@gmail.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> 이현수</div>
+  </footer>
+  <script>
+    <div class="container">© <span id="year"></span> 이현수. All rights reserved.</div>
+  </script>
+</body>
+</html>
