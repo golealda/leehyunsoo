@@ -4,8 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>포트폴리오, 이현수</title>
-  <meta name="description" content="소프트웨어 엔지니어 당신의 이름의 포트폴리오. 프로젝트, 기술 스택, 경력과 연락처 정보를 확인하세요." />
-  <meta name="author" content="당신의 이름" />
+  <meta name="description" content="백엔드 개발자 이현수의 포트폴리오입니다." />
+  <meta name="author" content="이현수" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,145 +19,213 @@
         <a href="#about">소개</a>
         <a href="#skills">기술</a>
         <a href="#projects">프로젝트</a>
-        <!-- <a href="#experience">경력</a> -->
         <a href="#contact">연락처</a>
       </nav>
     </div>
   </header>
 
-  <!-- 자기소개 -->
   <main class="container">
+    
     <section id="about">
       <h2 class="section-title">소개</h2>
-      <p class="section-desc">안녕하세요, 백엔드 개발자 이현수입니다.</p>
+      <p class="section-desc">
+        안녕하세요, 문제를 해결하고 가치를 만드는 백엔드 개발자 이현수입니다.<br>
+        사용자 경험을 최우선으로 생각하며, 안정적이고 확장 가능한 서버 구축에 관심이 많습니다.
+      </p>
     </section>
 
-    <!-- 기술 스택 -->
     <section id="skills">
-      <h1 class="Skill-title">Skill</h1>
+      <h2 class="Skill-title">Skills</h2>
       <div>
-      <ul class="language"><h3>Language</h3>
-        <li>JavaScript</li>
-        <li>Java</li>
-      </ul>
+        <h3 class="skill-category">Language</h3>
+        <ul class="language">
+          <li>Java</li>
+          <li>JavaScript (ES6+)</li>
+        </ul>
       </div>
       <div>
-      <ul class="fornt-end"><h3>Front-End</h3>
-        <li>JavaScript</li>
-        <li>React</li>
-      </ul>
+        <h3 class="skill-category">Front-End</h3>
+        <ul class="front-end">
+          <li>React</li>
+          <li>HTML/CSS</li>
+        </ul>
       </div>
       <div>
-      <ul class="back-end"><h3>Back-End</h3>
-        <li>Spring</li>
-        <li>Spring Boot</li>
-        <li>JPA</li>
-        <li>Node.js</li>
-      </ul>
+        <h3 class="skill-category">Back-End</h3>
+        <ul class="back-end">
+          <li>Spring Boot</li>
+          <li>Spring MVC</li>
+          <li>JPA / Hibernate</li>
+          <li>Node.js</li>
+        </ul>
       </div>
       <div>
-      <ul class="devops"><h3>Dev Ops</h3>
-        <li>MySQL</li>
-        <li>MariaDB</li>
-        <li>Git</li>
-        <li>GitHub</li>
-        <li>Docker</li>
-        <li>AWS</li>
-        <li>Kubernetes</li>
-      </ul>
+        <h3 class="skill-category">DevOps & DB</h3>
+        <ul class="devops">
+          <li>MySQL / MariaDB</li>
+          <li>Docker</li>
+          <li>AWS (EC2, RDS)</li>
+          <li>Git / GitHub</li>
+        </ul>
       </div>
     </section>
 
-  <!-- 미니 프로젝트 -->
-  <section id="mini-projects">
-    <h1 class="section-title">미니 프로젝트</h1>
-    <div class="project-grid">
-    <article class="project-card">
-    <h3 class="project-title">EatToday_Backend</h3>
-    <p>KBO 리그 팬들을 위한 구단별 커뮤니티 게시판 웹사이트입니다.<br>
-       각 팀별로 전용 게시판을 제공하고, 오늘의 경기, 정규리그 순위, 공지사항 등의 정보를 제공하여 팬들이 소통할 수 있는 공간</p>
-    <span class="badge">JavaScript</span>
-    <span class="badge">java</span>
-    <span class="badge">spring</span>
-    <span class="badge">MariaDB</span>
-    </div>
-    </article>
-  </section>
+    <section id="projects">
+      <h2 class="section-title">메인 프로젝트</h2>
+      <div class="project-grid">
 
-    <!-- 프로젝트 -->
-<section id="projects">
-  <h1 class="section-title">프로젝트</h1>
-  <div class="project-grid">
+        <article class="project-card">
+          <div class="card-image-header">
+            <img src="https://via.placeholder.com/400x200/2ecc71/ffffff?text=Voice+Translation" alt="양방향 음성-수화 번역">
+          </div>
+          <div class="card-content">
+            <h3 class="project-title">양방향 음성-수화 번역 서비스</h3>
+            <div class="project-date"><i class="far fa-calendar-alt"></i> 2023.10</div>
+            <p class="project-description">
+              시청각 장애인을 위한 실시간 의사소통 시스템입니다. 딥러닝 기반의 음성↔수화(텍스트/영상) 양방향 변환을 통해 장벽 없는 소통을 지원합니다.
+            </p>
+            <div class="project-tags">
+              <span class="badge">Deep Learning</span>
+              <span class="badge">STT/TTS</span>
+              <span class="badge">Accessibility</span>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">상세보기</a>
+              <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
 
-    <article class="project-card">
-      <h3 class="project-title">양방향 음성-수화 번역 서비스</h3>
-      <p>시청각 장애인을 위한 실시간 의사소통 시스템. 음성↔수화(텍스트/영상) 양방향 변환을 통해 장벽 없는 소통 지원.</p> 
-      <div class="project-meta">
-        <span class="badge">Deep Learning</span>
-        <span class="badge">STT/TTS</span>
-        <span class="badge">Computer Vision</span>
-        <span class="badge">Accessibility</span>
+        <article class="project-card">
+          <div class="card-image-header">
+            <img src="https://via.placeholder.com/400x200/3498db/ffffff?text=AR+Campus+Guide" alt="경운대 AR">
+          </div>
+          <div class="card-content">
+            <h3 class="project-title">경운대 AR (Campus Guide)</h3>
+            <div class="project-date"><i class="far fa-calendar-alt"></i> 2023.09</div>
+            <p class="project-description">
+              증강현실(AR)을 활용한 캠퍼스 안내 시스템입니다. 카메라로 비추면 건물 정보 및 편의시설을 직관적으로 시각화하여 제공합니다.
+            </p>
+            <div class="project-tags">
+              <span class="badge">Unity</span>
+              <span class="badge">AR Foundation</span>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">상세보기</a>
+              <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="card-image-header">
+            <img src="https://via.placeholder.com/400x200/e74c3c/ffffff?text=Security+System" alt="보안 구역 제어 시스템">
+          </div>
+          <div class="card-content">
+            <h3 class="project-title">ARP 활용 보안 구역 제어</h3>
+            <div class="project-date"><i class="far fa-calendar-alt"></i> 2023.08</div>
+            <p class="project-description">
+              RF 센서와 네트워크 스캔(ARP)을 결합한 보안 솔루션입니다. 캡티브 포털 인증 및 IP 제어를 통해 비인가 장치를 효과적으로 차단합니다.
+            </p>
+            <div class="project-tags">
+              <span class="badge">Network</span>
+              <span class="badge">IoT/RF</span>
+              <span class="badge">Linux</span>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">상세보기</a>
+              <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="card-image-header">
+            <img src="./img/calmate.png" alt="운동 커뮤니티">
+          </div>
+          <div class="card-content">
+            <h3 class="project-title">운동 커뮤니티 (Health & Fit)</h3>
+            <div class="project-date"><i class="far fa-calendar-alt"></i> 2023.07</div>
+            <p class="project-description">
+              체형 및 기초대사량 기반 맞춤형 운동/식단 관리 서비스입니다. AI 추천 시스템과 게이미피케이션 요소를 도입했습니다.
+            </p>
+            <div class="project-tags">
+              <span class="badge">AI/Recsys</span>
+              <span class="badge">Community</span>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">상세보기</a>
+              <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="card-image-header">
+            <img src="./img/eattoday.jpg" alt="술과 안주 페어링">
+          </div>
+          <div class="card-content">
+            <h3 class="project-title">술과 안주 페어링 커뮤니티</h3>
+            <div class="project-date"><i class="far fa-calendar-alt"></i> 2023.06</div>
+            <p class="project-description">
+              취향 기반 술-안주 페어링 추천 및 공유 플랫폼입니다. 사용자 후기 데이터를 분석하여 맞춤형 조합을 추천합니다.
+            </p>
+            <div class="project-tags">
+              <span class="badge">Web Service</span>
+              <span class="badge">Algorithm</span>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">상세보기</a>
+              <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+
       </div>
-    </article>
-
-    <article class="project-card">
-      <h3 class="project-title">경운대 AR (Campus Guide)</h3>
-      <p>증강현실(AR) 기술을 활용한 경운대학교 캠퍼스 정보 안내 시스템. 카메라로 캠퍼스를 비추면 건물 및 편의시설 정보를 직관적으로 시각화하여 제공.</p> 
-      <div class="project-meta">
-        <span class="badge">Unity</span>
-        <span class="badge">AR Foundation</span>
-      </div>
-    </article>
-
-    <article class="project-card">
-      <h3 class="project-title">ARP 활용 보안 구역 제어 시스템</h3>
-      <p>RF 센서와 네트워크 스캔(ARP)을 활용한 보안 사각지대 해소 솔루션. 캡티브 포털 인증 및 IP 제어를 통해 비인가 장치 차단.</p> 
-      <div class="project-meta">
-        <span class="badge">Network Security</span>
-        <span class="badge">IoT/RF Sensor</span>
-        <span class="badge">ARP Spoofing</span>
-        <span class="badge">System Programming</span>
-      </div>
-    </article>
-
-    <article class="project-card">
-      <h3 class="project-title">운동 커뮤니티 (Health & Fit)</h3>
-      <p>체형 및 기초대사량 기반 맞춤형 운동/식단 관리 서비스. AI 추천 시스템과 게이미피케이션 요소를 도입하여 지속적인 건강 관리를 지원.</p> 
-      <div class="project-meta">
-        <span class="badge">AI Recommendation</span>
-        <span class="badge">Community</span>
-      </div>
-    </article>
-
-    <article class="project-card">
-      <h3 class="project-title">술과 안주 페어링 커뮤니티</h3>
-      <p>취향 기반 술-안주 페어링 추천 및 레시피 공유 플랫폼. 후기 데이터 분석을 통한 사용자 맞춤 추천 제공.</p> 
-      <div class="project-meta">
-        <span class="badge">Web Service</span>
-        <span class="badge">Pairing Algorithm</span>
-        <span class="badge">Social</span>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-    <!-- 경력 -->
-    <section id="experience">
     </section>
 
-    <!-- 연락처 -->
+    <section id="mini-projects">
+      <h2 class="section-title">미니 프로젝트</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="card-content">
+            <h3 class="project-title">EatToday_Backend</h3>
+            <p class="project-description">
+              KBO 리그 팬들을 위한 구단별 커뮤니티 게시판 웹사이트입니다.<br>
+              팀별 전용 게시판, 경기 일정, 순위 정보 등을 제공하여 팬 소통을 지원합니다.
+            </p>
+            <div class="project-tags">
+              <span class="badge">Java</span>
+              <span class="badge">Spring Boot</span>
+              <span class="badge">MariaDB</span>
+            </div>
+            <div class="card-actions">
+              <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="contact">
-      <p class="contact-github"></p> 
-      <p class="contact-email">이메일: dlgustn4125@gmail.com</p>
+      <h2 class="section-title">Contact</h2>
+      <p>함께 성장하고 소통하고 싶습니다. 언제든 연락 주세요!</p>
+      <div style="margin-top: 20px;">
+        <p class="contact-email"><i class="fas fa-envelope"></i> dlgustn4125@gmail.com</p>
+        <p class="contact-github"><a href="https://github.com/본인아이디" target="_blank"><i class="fab fa-github"></i> GitHub 바로가기</a></p>
+      </div>
     </section>
+
   </main>
 
   <footer>
-    <div class="container">© <span id="year"></span> 이현수</div>
+    <div class="container">
+      © <span id="year"></span> 이현수. All rights reserved.
+    </div>
   </footer>
+
   <script>
-    <div class="container">© <span id="year"></span> 이현수. All rights reserved.</div>
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

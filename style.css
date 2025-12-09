@@ -1,35 +1,36 @@
-/* ===== 미니멀 베이스 ===== */
-:root{
-  /* 라이트 */
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --text: #111827;      /* 거의 검정 */
-  --muted: #6b7280;     /* 회색 텍스트 */
-  --line: #e5e7eb;      /* 라인/보더 */
-  --brand: #111827;     /* 링크/포커스는 단색 */
+/* ===== 미니멀 베이스 + 카드형 디자인 ===== */
+:root {
+  /* 라이트 모드 (기본) */
+  --bg: #f9fafb;        /* 배경: 아주 연한 회색 */
+  --surface: #ffffff;   /* 카드: 흰색 */
+  --text: #111827;      /* 글자: 거의 검정 */
+  --muted: #6b7280;     /* 보조 글자: 회색 */
+  --line: #e5e7eb;      /* 테두리/구분선 */
+  --brand: #111827;     /* 브랜드 컬러 */
+  --accent: #3498db;    /* 포인트 컬러 (파랑) */
 
-  --radius: 10px;
-  --container: 920px;
-  --gap: 20px;
+  --radius: 12px;       /* 둥근 모서리 크기 */
+  --container: 1100px;  /* 전체 콘텐츠 너비 */
+  --gap: 24px;          /* 그리드 간격 */
 }
 
-@media (prefers-color-scheme: dark){
-  :root{
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* 다크 모드 */
     --bg: #0b0f14;
-    --surface: #0b0f14;
+    --surface: #161b22;
     --text: #e5e7eb;
     --muted: #9ca3af;
-    --line: #1f2937;
+    --line: #30363d;
     --brand: #e5e7eb;
   }
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body{
+body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR",
-               Roboto, "Segoe UI", "맑은 고딕", "Nanum Gothic", sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   font-size: 16px;
   line-height: 1.65;
   letter-spacing: -0.2px;
@@ -38,152 +39,240 @@ body{
 }
 
 /* 레이아웃 */
-.container{
+.container {
   width: min(100%, var(--container));
   margin: 0 auto;
   padding: 0 20px;
 }
-main.container { padding-top: 24px; }
+main.container { padding-top: 40px; }
 
-section{ margin: 72px 0; }
-.section-title{
-  margin: 0 0 8px;
-  font-size: clamp(22px, 2.2vw + 12px, 32px);
+section { margin: 80px 0; }
+.section-title {
+  margin: 0 0 16px;
+  font-size: clamp(24px, 2.5vw, 32px);
   font-weight: 800;
+  color: var(--text);
 }
-.section-desc{ margin: 0; color: var(--muted); }
+.section-desc { margin: 0; color: var(--muted); }
 
-/* ===== 헤더/내비: 선 + 여백만 ===== */
-header{
-  position: sticky; top: 0; z-index: 10;
+/* ===== 헤더/내비게이션 ===== */
+header {
+  position: sticky; top: 0; z-index: 100;
   background: var(--surface);
   border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
 }
-.nav{
+.nav {
   height: 64px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.logo{
-  font-weight: 800; letter-spacing: -0.02em; font-size: 16px;
+.logo {
+  font-weight: 800; letter-spacing: -0.02em; font-size: 18px;
 }
-nav a{
+nav a {
   text-decoration: none;
-  color: var(--text);
+  color: var(--muted);
   margin-left: 16px;
   padding: 6px 8px;
   border-radius: 6px;
-  border: 1px solid transparent;
+  transition: color 0.2s;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
-nav a:hover{ border-color: var(--line); }
+nav a:hover, nav a.active { color: var(--text); }
 
-/* ===== 소개 ===== */
-#about{
+/* ===== 소개 (About) ===== */
+#about {
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 32px;
 }
 
-/* ===== 스킬: 두 열 그리드 + 칩은 라인만 ===== */
-#skills{
+/* ===== 스킬 (Skills) ===== */
+#skills {
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 32px;
 }
-#skills .Skill-title{
-  margin: 0 0 10px;
-  font-size: 18px; font-weight: 800;
+#skills .Skill-title {
+  margin: 0 0 20px;
+  font-size: 20px; font-weight: 800;
 }
-#skills > div{
+#skills > div {
   display: grid;
   grid-template-columns: 140px 1fr;
-  gap: 8px 16px;
-  padding: 14px 0;
+  gap: 10px 20px;
+  padding: 16px 0;
   border-top: 1px solid var(--line);
 }
-#skills > div:first-of-type{ border-top: 0; }
-
-#skills h3{
+#skills > div:first-of-type { border-top: 0; }
+#skills h3 {
   margin: 0;
-  font-size: 12px; font-weight: 800;
+  font-size: 14px; font-weight: 700;
   color: var(--muted);
-  text-transform: uppercase; letter-spacing: .06em;
+  text-transform: uppercase; letter-spacing: .05em;
 }
-#skills ul{
+#skills ul {
   list-style: none; margin: 0; padding: 0;
-  display: flex; flex-wrap: wrap; gap: 8px;
+  display: flex; flex-wrap: wrap; gap: 10px;
 }
-#skills li{
+#skills li {
+  background: var(--bg);
   border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 13px; font-weight: 600;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px; font-weight: 500;
 }
 
-/* 오탈자 클래스 대응 */
-.fornt-end h3, .front-end h3, .language h3, .back-end h3, .devops h3{ color: var(--muted); }
-
-/* ===== 프로젝트: 카드는 평면, 선만 사용 ===== */
-#projects{ display: grid; gap: var(--gap); }
-.project-grid{
+/* ===== 프로젝트 카드 그리드 ===== */
+.project-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 반응형 배치 */
+  gap: 30px;
 }
-.project-card{
-  grid-column: span 12;
+
+.project-card {
+  background-color: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.project-title{
-  margin: 0 0 6px;
-  font-size: 18px; font-weight: 800;
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-color: var(--muted);
 }
-.project-meta{
-  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+
+/* 카드 이미지 영역 */
+.card-image-header {
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background-color: #eee;
 }
-.badge{
-  border: 1px solid var(--line);
+.card-image-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.project-card:hover .card-image-header img {
+  transform: scale(1.05);
+}
+
+/* 카드 내용 영역 */
+.card-content {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-title {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.project-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* 태그 (뱃지) */
+.project-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 24px;
+}
+.badge {
+  background-color: rgba(52, 152, 219, 0.1); /* 연한 파랑 */
+  color: var(--accent);
+  border: 1px solid transparent;
   border-radius: 999px;
-  padding: 4px 8px;
-  font-size: 12px; font-weight: 700;
+  padding: 4px 10px;
+  font-size: 12px; font-weight: 600;
 }
 
-/* ===== 연락처 ===== */
-#contact{
+@media (prefers-color-scheme: dark) {
+  .badge {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+  }
+}
+
+/* 버튼 영역 */
+.card-actions {
+  display: flex; gap: 10px;
+}
+.btn {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+/* Primary 버튼 */
+.btn-primary {
+  background-color: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+}
+.btn-primary:hover { filter: brightness(0.9); }
+
+/* Outline 버튼 */
+.btn-outline {
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.btn-outline:hover {
+  background-color: var(--bg);
+  border-color: var(--muted);
+}
+
+/* ===== 연락처 (Contact) ===== */
+#contact {
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 32px;
+  text-align: center;
 }
-#contact p{ margin: 6px 0; }
-.contact-github a{
-  color: var(--brand);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
+.contact-email { font-size: 1.1rem; font-weight: 600; }
 
-/* ===== 푸터 ===== */
-footer{
-  margin: 56px 0 28px;
+/* ===== 푸터 (Footer) ===== */
+footer {
+  margin: 60px 0 40px;
   color: var(--muted);
   text-align: center;
   font-size: 14px;
 }
 
-/* ===== 상태/접근성 ===== */
-a, button { cursor: pointer; }
-:focus-visible{
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
-}
-@media (prefers-reduced-motion: reduce){
-  *{ animation: none !important; transition: none !important; }
-}
-
-/* ===== 반응형 ===== */
-@media (min-width: 720px){
-  .project-card{ grid-column: span 6; }
-}
-@media (min-width: 1024px){
-  .project-card{ grid-column: span 4; }
+/* ===== 반응형 미디어 쿼리 ===== */
+@media (max-width: 768px) {
+  #skills > div { grid-template-columns: 1fr; gap: 8px; }
+  .card-actions { flex-direction: column; }
 }
