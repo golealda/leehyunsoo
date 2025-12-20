@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>포트폴리오, 이현수</title>
   <meta name="description" content="백엔드 개발자 이현수의 포트폴리오입니다." />
   <meta name="author" content="이현수" />
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="bg-gradient-blur"></div>
 
@@ -26,13 +28,13 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-icons">
-          <a href="https://github.com/golealda" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/golealda" target="_blank"><i class="fab fa-github"></i></a>
       </div>
     </div>
   </header>
 
   <main>
-    
+
     <section id="hero" class="container hero-section">
       <div class="hero-content">
         <h1>안녕하세요! <span class="text-highlight">백엔드 개발자</span><br>이현수입니다</h1>
@@ -42,9 +44,9 @@
         </p>
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
-          <a href="#" class="btn btn-secondary">이력서</a>
+          <!-- <a href="#" class="btn btn-secondary">이력서</a> -->
           <a href="https://docs.google.com/document/d/e/2PACX-1vSl81CsFoZg7RvQhiQLarVEFLB8nZ66EtZfQIp5Y01jrAQNqrmx9YvD3ZLIHRVLtcyzfESY7EYgkgng/pub?embedded=true"
-           class="btn btn-secondary">자소서</a>
+            class="btn btn-secondary">자소서</a>
         </div>
       </div>
       <div class="hero-image">
@@ -55,101 +57,103 @@
     <section id="about" class="container section-center">
       <h2 class="section-title">About Me</h2>
       <p class="section-desc">
-        5년간의 개발 경험을 바탕으로 사용자 중심의 웹 애플리케이션을 만들고 있습니다.
+        개발 경험을 바탕으로 사용자 중심의 웹 애플리케이션을 만들고 있습니다.
       </p>
-      
+
       <div class="feature-grid">
         <div class="feature-card bg-blue-soft">
-          <div class="feature-icon icon-blue"><i class="fas fa-code"></i></div>
-          <h3>Frontend Development</h3>
-          <p>React, Vue.js, JavaScript를 활용한 현대적인 사용자 인터페이스 구축</p>
+          <div class="feature-icon icon-blue"><i class="fas fa-server"></i></div>
+          <h3>Core Backend</h3>
+          <p>Java, Spring Boot를 활용한 견고한 REST API 설계 및 대용량 트래픽 처리를 고려한 서버 아키텍처 구축</p>
         </div>
+
         <div class="feature-card bg-green-soft">
-          <div class="feature-icon icon-green"><i class="fas fa-server"></i></div>
-          <h3>Backend Development</h3>
-          <p>Java(Spring Boot), Node.js를 이용한 안정적이고 확장 가능한 서버 시스템 개발</p>
+          <div class="feature-icon icon-green"><i class="fas fa-database"></i></div>
+          <h3>Data & Performance</h3>
+          <p>JPA(Hibernate), QueryDSL을 이용한 효율적인 ORM 사용 및 MySQL, Redis 쿼리 튜닝과 캐싱 전략 수립</p>
         </div>
+
         <div class="feature-card bg-purple-soft">
-          <div class="feature-icon icon-purple"><i class="fas fa-mobile-alt"></i></div>
-          <h3>Mobile / New Tech</h3>
-          <p>Flutter, Unity(AR) 등을 활용한 크로스 플랫폼 및 신기술 분야 도전</p>
+          <div class="feature-icon icon-purple"><i class="fas fa-network-wired"></i></div>
+          <h3>Infra & DevOps</h3>
+          <p>AWS, Docker를 활용한 클라우드 환경 구축 및 GitHub Actions, Jenkins를 통한 CI/CD 파이프라인 자동화</p>
         </div>
       </div>
     </section>
 
     <section id="skills" class="container section-center bg-gray-soft">
-  <h2 class="section-title">기술 스택</h2>
-  <p class="section-desc">다양한 기술을 활용하여 최적의 솔루션을 제공합니다</p>
+      <h2 class="section-title">기술 스택</h2>
+      <p class="section-desc">다양한 기술을 활용하여 최적의 솔루션을 제공합니다</p>
 
-  <div class="skills-grid">
-    <div class="skill-card">
-      <i class="fab fa-java icon-java"></i>
-      <span>Java</span>
-    </div>
-    <div class="skill-card">
-      <i class="fab fa-js icon-js"></i>
-      <span>JavaScript (ES6+)</span>
-    </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fab fa-java icon-java"></i>
+          <span>Java</span>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-js icon-js"></i>
+          <span>JavaScript (ES6+)</span>
+        </div>
 
-    <div class="skill-card">
+        <!-- <div class="skill-card">
       <i class="fab fa-react icon-react"></i>
       <span>React</span>
-    </div>
-    <div class="skill-card">
-      <i class="fab fa-html5 icon-html"></i>
-      <span>HTML / CSS</span>
-    </div>
+    </div> -->
+        <div class="skill-card">
+          <i class="fab fa-html5 icon-html"></i>
+          <span>HTML / CSS</span>
+        </div>
 
-    <div class="skill-card">
-      <i class="fas fa-leaf icon-spring"></i>
-      <span>Spring Boot</span>
-    </div>
-    <div class="skill-card">
-      <i class="fas fa-server icon-spring"></i>
-      <span>Spring MVC</span>
-    </div>
-    <div class="skill-card">
-      <i class="fas fa-layer-group icon-db"></i>
-      <span>JPA / Hibernate</span>
-    </div>
-    <div class="skill-card">
-      <i class="fab fa-node icon-node"></i>
-      <span>Node.js</span>
-    </div>
+        <div class="skill-card">
+          <i class="fas fa-leaf icon-spring"></i>
+          <span>Spring Boot</span>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-server icon-spring"></i>
+          <span>Spring MVC</span>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-layer-group icon-db"></i>
+          <span>JPA / Hibernate</span>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-node icon-node"></i>
+          <span>Node.js</span>
+        </div>
 
-    <div class="skill-card">
-      <i class="fas fa-database icon-db"></i>
-      <span>MySQL / MariaDB</span>
-    </div>
-    <div class="skill-card">
-      <i class="fas fa-leaf icon-mongo"></i>
-      <span>MongoDB</span>
-    </div>
+        <div class="skill-card">
+          <i class="fas fa-database icon-db"></i>
+          <span>MySQL / MariaDB</span>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-leaf icon-mongo"></i>
+          <span>MongoDB</span>
+        </div>
 
-    <div class="skill-card">
-      <i class="fab fa-docker icon-docker"></i>
-      <span>Docker</span>
-    </div>
-    <div class="skill-card">
-      <i class="fab fa-aws icon-aws"></i>
-      <span>AWS (EC2, RDS)</span>
-    </div>
-    <div class="skill-card">
-      <i class="fab fa-git-alt icon-git"></i>
-      <span>Git / GitHub</span>
-    </div>
-  </div>
-</section>
+        <div class="skill-card">
+          <i class="fab fa-docker icon-docker"></i>
+          <span>Docker</span>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-aws icon-aws"></i>
+          <span>AWS (EC2, RDS)</span>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-git-alt icon-git"></i>
+          <span>Git / GitHub</span>
+        </div>
+      </div>
+    </section>
 
     <section id="projects" class="container section-center">
       <h2 class="section-title">메인 프로젝트</h2>
       <p class="section-desc">최근 진행한 프로젝트들을 소개합니다</p>
-      
+
       <div class="project-grid">
 
         <article class="project-card new-style">
           <div class="card-image-header">
-            <img src="https://via.placeholder.com/400x250/2563eb/ffffff?text=Voice+Translation" alt="양방향 음성-수화 번역">
+            <img src="./img/helpme.png" alt="양방향 음성-수화 번역">
             <div class="image-overlay"></div>
           </div>
           <div class="card-content">
@@ -162,7 +166,8 @@
               <span class="badge-new">STT/TTS</span>
               <span class="badge-new">Accessibility</span>
             </div>
-            <a href="#" class="card-link">자세히 보기 <i class="fas fa-arrow-right"></i></a>
+            <a href="https://github.com/DoWaJo-KW/Speech-To-Sign-Translator" class="card-link">자세히 보기 <i
+                class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -180,7 +185,8 @@
               <span class="badge-new green">Unity</span>
               <span class="badge-new green">AR Foundation</span>
             </div>
-            <a href="#" class="card-link green">자세히 보기 <i class="fas fa-arrow-right"></i></a>
+            <a href="https://github.com/WHCC-KW/KW-Space" class="card-link green">자세히 보기 <i
+                class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -199,7 +205,8 @@
               <span class="badge-new">IoT/RF</span>
               <span class="badge-new">Linux</span>
             </div>
-            <a href="#" class="card-link">자세히 보기 <i class="fas fa-arrow-right"></i></a>
+            <a href="https://github.com/4-1-capstone-palman/BLEsniffing" class="card-link">자세히 보기 <i
+                class="fas fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -217,11 +224,9 @@
               <span class="badge-new purple">Web Service</span>
               <span class="badge-new purple">Algorithm</span>
             </div>
-            <a href="https://github.com/Youth-Leap-Squad/EatToday_Backend" 
-               class="card-link purple" 
-               target="_blank" 
-               rel="noopener noreferrer">
-               자세히 보기 <i class="fas fa-arrow-right"></i>
+            <a href="https://github.com/Youth-Leap-Squad/EatToday_Backend" class="card-link purple" target="_blank"
+              rel="noopener noreferrer">
+              자세히 보기 <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </article>
@@ -240,11 +245,9 @@
               <span class="badge-new green">AI/Recsys</span>
               <span class="badge-new green">Community</span>
             </div>
-            <a href="https://github.com/Cal-Mate/CalMate-Backend" 
-               class="card-link purple" 
-               target="_blank" 
-               rel="noopener noreferrer">
-               자세히 보기 <i class="fas fa-arrow-right"></i>
+            <a href="https://github.com/Cal-Mate/CalMate-Backend" class="card-link purple" target="_blank"
+              rel="noopener noreferrer">
+              자세히 보기 <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </article>
@@ -253,17 +256,18 @@
     </section>
 
     <section id="contact-cta" class="cta-section">
-        <div class="container section-center">
-            <h2 class="cta-title">함께 프로젝트를 시작해보세요</h2>
-            <p class="cta-desc">새로운 아이디어나 협업 기회에 대해 언제든 연락주세요</p>
-            <div class="cta-buttons">
-                <a href="mailto:dlgustn4125@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> 이메일 보내기</a>
-            </div>
-            <div class="social-icons">
-                <a href="https://github.com/golealda" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/%ED%98%84%EC%88%98-%EC%9D%B4-89a28a300/" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-            </div>
+      <div class="container section-center">
+        <h2 class="cta-title">함께 프로젝트를 시작해보세요</h2>
+        <p class="cta-desc">새로운 아이디어나 협업 기회에 대해 언제든 연락주세요</p>
+        <div class="cta-buttons">
+          <a href="mailto:dlgustn4125@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> 이메일 보내기</a>
         </div>
+        <div class="social-icons">
+          <a href="https://github.com/golealda" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/%ED%98%84%EC%88%98-%EC%9D%B4-89a28a300/" class="social-btn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -278,4 +282,5 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
