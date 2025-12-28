@@ -649,4 +649,23 @@ footer {
     flex-direction: column;
     padding: 0 2rem;
   }
+
+  /* 모바일에서 이미지 최적화 */
+  .hero-image {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .hero-image img {
+    transform: none;
+    /* 3D 효과 제거 */
+    margin: 0 auto;
+  }
+
+  /* 프로젝트 카드 이미지 꽉 채우기 */
+  .card-image-header img {
+    object-fit: cover;
+  }
 }
+
+https: //lhs-portfolio.netlify.app/
