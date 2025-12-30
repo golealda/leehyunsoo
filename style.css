@@ -91,13 +91,6 @@ section {
   letter-spacing: -0.02em;
 }
 
-.section-desc {
-  font-size: 1.125rem;
-  color: var(--text-muted);
-  max-width: 600px;
-  margin: 0 auto 3.5rem;
-}
-
 .text-highlight {
   color: var(--primary-color);
 }
@@ -320,85 +313,193 @@ nav a:hover {
 }
 
 /* Skills Section (Grid) */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 1.5rem;
-  justify-content: center;
-  max-width: 800px;
+/* Skills Section (New List Style) */
+.skills-container-new {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+  /* Clean soft shadow */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  max-width: 1000px;
   margin: 0 auto;
+  text-align: left;
 }
 
-.skill-card {
-  background: var(--bg-white);
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
-  text-align: center;
-  box-shadow: var(--shadow-card);
-  transition: all 0.3s ease;
+.skill-category-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed var(--border-light);
 }
 
-.skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-soft);
+.skill-category-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
-.skill-card i {
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.category-icon-box {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-icon-box i {
   font-size: 2rem;
 }
 
-.skill-card span {
-  font-weight: 600;
-  font-size: 0.9rem;
+/* Icon Colors */
+.skill-category-row:nth-child(1) .category-icon-box i {
+  color: #2563eb;
 }
 
-/* 아이콘 색상 */
-.icon-java {
-  color: #5382a1;
+/* Language */
+.skill-category-row:nth-child(2) .category-icon-box i {
+  color: #d97706;
 }
 
-.icon-spring {
-  color: #6db33f;
+/* Frontend */
+.skill-category-row:nth-child(3) .category-icon-box i {
+  color: #059669;
 }
 
-.icon-js {
-  color: #f7df1e;
+/* Backend */
+.skill-category-row:nth-child(4) .category-icon-box i {
+  color: #4f46e5;
 }
 
-.icon-react {
-  color: #61dafb;
+/* DevOps */
+
+.category-label {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1f2937;
 }
 
-.icon-node {
-  color: #68a063;
+.category-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  flex-grow: 1;
 }
 
-.icon-db {
-  color: #00758f;
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.icon-docker {
-  color: #2496ed;
+.tech-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-.icon-git {
-  color: #f1502f;
+/* Badge Colors */
+.tech-badge.java {
+  background: #e76f00;
 }
 
-.icon-html {
-  color: #e34f26;
+.tech-badge.js {
+  background: #f7df1e;
+  color: #333;
 }
 
-.icon-mongo {
-  color: #47a248;
+.tech-badge.html {
+  background: #3b82f6;
 }
 
-.icon-aws {
-  color: #ff9900;
+/* Generic Blue */
+.tech-badge.react {
+  background: #22c55e;
+}
+
+/* Greenish/Teal or standard react blue? Let's use darker teal to stand out from html */
+.tech-badge.react {
+  background: #14b8a6;
+}
+
+/* Teal */
+
+.tech-badge.spring {
+  background: #6db33f;
+}
+
+.tech-badge.jpa {
+  background: #64748b;
+}
+
+.tech-badge.node {
+  background: #84cc16;
+  color: #1f2937;
+}
+
+/* Lime */
+.tech-badge.mysql {
+  background: #0ea5e9;
+}
+
+/* Sky Blue */
+.tech-badge.mongo {
+  background: #10b981;
+}
+
+/* Emerald */
+
+.tech-badge.docker {
+  background: #3b82f6;
+}
+
+.tech-badge.aws {
+  background: #f59e0b;
+}
+
+/* Amber */
+.tech-badge.git {
+  background: #ef4444;
+}
+
+/* Red */
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skills-container-new {
+    padding: 2rem;
+  }
+
+  .skill-category-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .category-header {
+    width: 100%;
+  }
+
+  .tech-badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
 }
 
 /* Projects Section (New Style) */
@@ -526,7 +627,7 @@ nav a:hover {
 
 /* CTA Section (Footer Top) */
 .cta-section {
-  background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+  background: transparent;
   padding: 5rem 0;
   text-align: center;
 }
