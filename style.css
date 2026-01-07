@@ -241,75 +241,67 @@ nav a:hover {
   transform: perspective(1000px) rotateY(0deg);
 }
 
-/* About Section (Feature Cards) */
-.feature-grid {
+/* About Section (Info Grid) */
+.about-info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 0;
 }
 
-.feature-card {
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
   background: var(--bg-white);
-  padding: 2.5rem 2rem;
   border-radius: var(--radius-md);
-  text-align: left;
+  box-shadow: var(--shadow-card);
   transition: all 0.3s ease;
-  border: 1px solid transparent;
 }
 
-.feature-card:hover {
+.info-item:hover {
   box-shadow: var(--shadow-soft);
-  border-color: var(--border-light);
   transform: translateY(-5px);
 }
 
-.feature-card.bg-blue-soft:hover {
-  background-color: var(--bg-blue-soft);
-}
-
-.feature-card.bg-green-soft:hover {
-  background-color: var(--bg-green-soft);
-}
-
-.feature-card.bg-purple-soft:hover {
-  background-color: var(--bg-purple-soft);
-}
-
-.feature-icon {
-  width: 50px;
-  height: 50px;
+.info-icon {
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--bg-main);
   border-radius: var(--radius-sm);
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  color: #6b7280;
+  font-size: 1.8rem;
+  flex-shrink: 0;
 }
 
-.icon-blue {
-  background: var(--bg-blue-soft);
-  color: var(--accent-blue);
+.info-content {
+  flex: 1;
+  text-align: left;
 }
 
-.icon-green {
-  background: var(--bg-green-soft);
-  color: var(--accent-green);
-}
-
-.icon-purple {
-  background: var(--bg-purple-soft);
-  color: var(--accent-purple);
-}
-
-.feature-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-  font-weight: 700;
-}
-
-.feature-card p {
-  font-size: 0.95rem;
+.info-label {
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.section-title i {
+  color: #6b7280;
+  margin-right: 0.5rem;
 }
 
 /* Skills Section (Grid) */
@@ -741,9 +733,14 @@ footer {
   }
 
   /* 여기도 1fr로 확실하게 잡아줍니다 */
-  .feature-grid,
+  .about-info-grid,
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-info-grid {
+    gap: 1.5rem;
+    padding: 2rem 0;
   }
 
   .cta-buttons {
@@ -766,5 +763,13 @@ footer {
   /* 프로젝트 카드 이미지 꽉 채우기 */
   .card-image-header img {
     object-fit: cover;
+  }
+}
+
+/* 태블릿 가로 (1024px 이하): About 섹션 2열 */
+@media (max-width: 1024px) {
+  .about-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 }
