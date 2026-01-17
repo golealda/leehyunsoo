@@ -120,8 +120,8 @@ const projects = [
             "웹 소켓을 활용한 뽑기 게임 구현"
         ],
         repoConfig: {
-            path: "Cal-Mate/CalMate-Backend",
-            url: "https://github.com/Cal-Mate/CalMate-Backend"
+            path: "golealda/be19-4th-AA-CalMate-Dev",
+            url: "https://github.com/golealda/be19-4th-AA-CalMate-Dev"
         },
         duration: "2025.09 ~ 2025.10"
     },
