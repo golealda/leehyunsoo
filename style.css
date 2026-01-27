@@ -1046,3 +1046,128 @@ footer {
   border-left: 0.25em solid #d0d7de;
   margin-bottom: 1rem;
 }
+
+
+/* 인쇄 스타일 (PDF 변환용) - 웹 디자인 유지 + 가로 모드 최적화 */
+@media print {
+
+  /* 가로 모드 설정 및 여백 조정 */
+  @page {
+    size: landscape;
+    margin: 10mm;
+  }
+
+  /* 전체 내용을 축소하여 페이지에 맞춤 (가로 짤림 방지) */
+  body {
+    zoom: 0.75;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: var(--bg-main) !important;
+    color: var(--text-main) !important;
+    width: 100% !important;
+    min-width: 1024px !important;
+  }
+
+  /* 헤더 표시 (절대 위치) */
+  header {
+    display: block !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  /* 히어로 섹션 */
+  .hero-section {
+    padding-top: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4rem !important;
+    /* Hero 다음에 페이지 넘김 허용 (avoid 제거) */
+  }
+
+  .hero-image {
+    display: block !important;
+    max-width: 400px !important;
+  }
+
+  .hero-image img {
+    transform: none !important;
+    box-shadow: var(--shadow-card) !important;
+  }
+
+  /* 섹션 내부 끊김 방지 (About Me 등 한 페이지 유지) */
+  section,
+  .section-center,
+  #about,
+  #skills,
+  #projects {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 제목과 내용 분리 방지 */
+  .section-title {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* 텍스트 짤림 방지 */
+  .info-value,
+  .project-title,
+  .tech-badge {
+    white-space: nowrap;
+  }
+
+  /* 카드 스타일 복원 */
+  .info-item,
+  .skills-container-new,
+  .project-card,
+  .project-card.detail-card {
+    box-shadow: var(--shadow-card) !important;
+    border: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    background: var(--bg-white) !important;
+  }
+
+  .tech-badge {
+    border: none !important;
+    color: white !important;
+  }
+
+  .bg-gradient-blur {
+    display: block !important;
+    opacity: 0.5;
+  }
+
+  /* 그리드 레이아웃 유지 */
+  .about-info-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
+  }
+
+  .project-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+
+  .readme-modal-overlay {
+    display: none !important;
+  }
+
+  .cta-section {
+    display: block !important;
+    page-break-inside: avoid;
+  }
+
+  .container {
+    width: min(95%, var(--container-width)) !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+  }
+}
