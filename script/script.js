@@ -1,8 +1,8 @@
 function renderProjects() {
-    const grid = document.querySelector('.project-grid');
-    if (!grid) return;
+  const grid = document.querySelector('.project-grid');
+  if (!grid) return;
 
-    grid.innerHTML = projects.map(project => `
+  grid.innerHTML = projects.map(project => `
         <article class="project-card detail-card">
           <div class="card-header">
             <div class="header-top">
@@ -11,8 +11,8 @@ function renderProjects() {
             </div>
             <div class="project-tags">
               ${project.tags.map(tag =>
-        `<span class="badge-new ${tag.color === 'blue' ? '' : tag.color}">${tag.name}</span>`
-    ).join('')}
+    `<span class="badge-new ${tag.color === 'blue' ? '' : tag.color}">${tag.name}</span>`
+  ).join('')}
             </div>
           </div>
           <div class="card-body">
@@ -28,7 +28,7 @@ function renderProjects() {
             </div>
           </div>
           <div class="card-footer">
-            <a href="#" class="card-link ${project.tags[0].color === 'blue' ? '' : project.tags[0].color}" 
+            <a href="#" class="card-link readme-btn ${project.tags[0].color === 'blue' ? '' : project.tags[0].color}" 
                onclick="openReadme('${project.repoConfig.path}'); return false;">
               Readme <i class="fas fa-book-open"></i>
             </a>
@@ -42,72 +42,72 @@ function renderProjects() {
 
 // 기존 openReadme 함수는 글로벌 스코프로 유지해야 onclick에서 호출 가능
 window.openReadme = async function (repoPath) {
-    const modal = document.getElementById('readme-modal');
-    const contentDiv = document.getElementById('readme-content');
-    const titleSpan = document.getElementById('modal-repo-name');
+  const modal = document.getElementById('readme-modal');
+  const contentDiv = document.getElementById('readme-content');
+  const titleSpan = document.getElementById('modal-repo-name');
 
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    titleSpan.innerText = repoPath;
-    contentDiv.innerHTML = '<div style="text-align:center; padding: 3rem;"><i class="fas fa-spinner fa-spin fa-2x"></i><br><br>README를 불러오는 중입니다...</div>';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  titleSpan.innerText = repoPath;
+  contentDiv.innerHTML = '<div style="text-align:center; padding: 3rem;"><i class="fas fa-spinner fa-spin fa-2x"></i><br><br>README를 불러오는 중입니다...</div>';
 
-    try {
-        let branch = 'main';
-        let response = await fetch(`https://raw.githubusercontent.com/${repoPath}/main/README.md`);
+  try {
+    let branch = 'main';
+    let response = await fetch(`https://raw.githubusercontent.com/${repoPath}/main/README.md`);
 
-        if (!response.ok) {
-            branch = 'master';
-            response = await fetch(`https://raw.githubusercontent.com/${repoPath}/master/README.md`);
+    if (!response.ok) {
+      branch = 'master';
+      response = await fetch(`https://raw.githubusercontent.com/${repoPath}/master/README.md`);
+    }
+
+    if (!response.ok) throw new Error('README 파일을 찾을 수 없습니다.');
+
+    const text = await response.text();
+    let absoluteText = text.replace(
+      /!\[(.*?)\]\((?!http)(.*?)\)/g,
+      `![$1](https://raw.githubusercontent.com/${repoPath}/${branch}/$2)`
+    );
+
+    absoluteText = absoluteText.replace(
+      /<img([^>]*?)src=(["'])(.*?)\2([^>]*?)>/gi,
+      (match, p1, quote, src, p4) => {
+        if (src.startsWith('http')) {
+          if (src.includes('github.com') && src.includes('/blob/')) {
+            return `<img${p1}src="${src.replace('/blob/', '/raw/')}"${p4}>`;
+          }
+          return match;
         }
+        return `<img${p1}src="https://raw.githubusercontent.com/${repoPath}/${branch}/${src}"${p4}>`;
+      }
+    );
 
-        if (!response.ok) throw new Error('README 파일을 찾을 수 없습니다.');
+    contentDiv.innerHTML = marked.parse(absoluteText);
 
-        const text = await response.text();
-        let absoluteText = text.replace(
-            /!\[(.*?)\]\((?!http)(.*?)\)/g,
-            `![$1](https://raw.githubusercontent.com/${repoPath}/${branch}/$2)`
-        );
-
-        absoluteText = absoluteText.replace(
-            /<img([^>]*?)src=(["'])(.*?)\2([^>]*?)>/gi,
-            (match, p1, quote, src, p4) => {
-                if (src.startsWith('http')) {
-                    if (src.includes('github.com') && src.includes('/blob/')) {
-                        return `<img${p1}src="${src.replace('/blob/', '/raw/')}"${p4}>`;
-                    }
-                    return match;
-                }
-                return `<img${p1}src="https://raw.githubusercontent.com/${repoPath}/${branch}/${src}"${p4}>`;
-            }
-        );
-
-        contentDiv.innerHTML = marked.parse(absoluteText);
-
-    } catch (error) {
-        contentDiv.innerHTML = `<div style="text-align:center; padding: 2rem; color: #ef4444;">
+  } catch (error) {
+    contentDiv.innerHTML = `<div style="text-align:center; padding: 2rem; color: #ef4444;">
           <i class="fas fa-exclamation-circle fa-2x"></i><br><br>
           <p>README를 불러오지 못했습니다.<br>(${error.message})</p>
           <a href="https://github.com/${repoPath}" target="_blank" style="text-decoration:underline;">GitHub에서 직접 보기</a>
         </div>`;
-    }
+  }
 };
 
 window.closeReadme = function () {
-    const modal = document.getElementById('readme-modal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
+  const modal = document.getElementById('readme-modal');
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
 };
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
-    // 프로젝트 렌더링
-    renderProjects();
+  // 프로젝트 렌더링
+  renderProjects();
 
-    // 모달 이벤트 리스너
-    const modal = document.getElementById('readme-modal');
-    if (modal) {
-        modal.addEventListener('click', function (e) {
-            if (e.target === this) closeReadme();
-        });
-    }
+  // 모달 이벤트 리스너
+  const modal = document.getElementById('readme-modal');
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === this) closeReadme();
+    });
+  }
 });

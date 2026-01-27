@@ -1048,24 +1048,33 @@ footer {
 }
 
 
-/* 인쇄 스타일 (PDF 변환용) - 웹 디자인 유지 + 가로 모드 최적화 */
+/* 인쇄 스타일 (PDF 변환용) - 웹 디자인 유지 + 가로 모드 최적화 + 여백 최소화 */
 @media print {
 
-  /* 가로 모드 설정 및 여백 조정 */
+  /* 가로 모드 설정 및 여백 최소화 */
   @page {
     size: landscape;
-    margin: 10mm;
+    margin: 0;
+    /* 페이지 기본 여백 제거 */
   }
 
-  /* 전체 내용을 축소하여 페이지에 맞춤 (가로 짤림 방지) */
+  /* 전체 내용을 축소하되 꽉 차게 배치 */
   body {
-    zoom: 0.75;
+    zoom: 0.8;
+    /* 배율 약간 확대 (0.75 -> 0.8) */
+    margin: 1cm;
+    /* 내용물과 가장자리 사이 최소 여백 */
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     background-color: var(--bg-main) !important;
     color: var(--text-main) !important;
-    width: 100% !important;
+    width: auto !important;
     min-width: 1024px !important;
+  }
+
+  /* 섹션 위아래 여백 줄이기 */
+  section {
+    padding: 1rem 0 !important;
   }
 
   /* 헤더 표시 (절대 위치) */
@@ -1079,26 +1088,82 @@ footer {
     background: rgba(255, 255, 255, 0.9) !important;
   }
 
-  /* 히어로 섹션 */
+  /* 히어로 섹션 - 웹과 동일한 가로 배치 강제 (2단 레이아웃) */
   .hero-section {
-    padding-top: 120px !important;
+    padding-top: 60px !important;
+    padding-bottom: 2rem !important;
     display: flex !important;
+    flex-direction: row !important;
+    /* 가로 배치 강제 */
+    justify-content: space-between !important;
+    /* 양쪽 정렬 */
     align-items: center !important;
+    /* 수직 중앙 정렬 */
     gap: 4rem !important;
-    /* Hero 다음에 페이지 넘김 허용 (avoid 제거) */
+    /* 사이 간격 늘림 */
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .hero-content {
+    flex: 1 !important;
+    /* 남은 공간 차지 */
+    min-width: 0;
+    /* Flexbox 오버플로우 방지 */
+  }
+
+  .hero-content h1 {
+    font-size: 3rem !important;
+    /* 제목 크기 키움 */
+    margin-bottom: 1.5rem !important;
+    line-height: 1.2 !important;
+    color: var(--text-main) !important;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem !important;
+    /* 본문 크기 키움 */
+    line-height: 1.6 !important;
+    margin-bottom: 2rem !important;
+    max-width: none !important;
+    /* 너비 제한 해제 */
+  }
+
+  .hero-actions {
+    display: flex !important;
+    gap: 1rem !important;
+  }
+
+  /* 버튼 강제 표시 및 스타일링 */
+  .btn-primary {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.8rem 1.8rem !important;
+    border-radius: 8px !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   .hero-image {
     display: block !important;
-    max-width: 400px !important;
+    flex: 0 0 45% !important;
+    /* 오른쪽 45% 고정 (이미지 영역) */
+    max-width: 550px !important;
+    /* 이미지 최대 크기 대폭 상향 */
+    margin: 0 !important;
   }
 
   .hero-image img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 24px !important;
+    /* 둥근 모서리 */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
     transform: none !important;
-    box-shadow: var(--shadow-card) !important;
   }
 
-  /* 섹션 내부 끊김 방지 (About Me 등 한 페이지 유지) */
+  /* 섹션 내부 끊김 방지 */
   section,
   .section-center,
   #about,
@@ -1108,10 +1173,15 @@ footer {
     break-inside: avoid !important;
   }
 
-  /* 제목과 내용 분리 방지 */
+  /* 제목 여백 줄이기 */
   .section-title {
+    margin-bottom: 0.5rem !important;
     page-break-after: avoid !important;
     break-after: avoid !important;
+  }
+
+  .about-info-grid {
+    padding: 1rem 0 !important;
   }
 
   /* 텍스트 짤림 방지 */
@@ -1147,26 +1217,32 @@ footer {
   .about-info-grid {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 2rem !important;
+    gap: 1.5rem !important;
+    /* 간격 약간 축소 */
   }
 
   .project-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 2rem !important;
+    gap: 1.5rem !important;
+    /* 간격 약간 축소 */
   }
 
-  .readme-modal-overlay {
+  .readme-modal-overlay,
+  .readme-btn {
     display: none !important;
   }
 
   .cta-section {
     display: block !important;
     page-break-inside: avoid;
+    padding: 3rem 0 !important;
+    /* CTA 섹션 여백 축소 */
   }
 
   .container {
-    width: min(95%, var(--container-width)) !important;
+    width: 98% !important;
+    /* 좌우 꽉 차게 */
     max-width: none !important;
     margin: 0 auto !important;
   }
