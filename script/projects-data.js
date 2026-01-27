@@ -127,7 +127,7 @@ const projects = [
     },
     {
         id: 6,
-        title: "방문 요양 ERP <span style='font-size: 0.75em; font-weight: normal; display: block; margin-top: 4px; color: #555;'>🏆 한화시스템 BEYOND SW 캠프 19 프로젝트 1위</span>",
+        title: "방문 요양 ERP",
         tags: [
             { name: "Web Service", color: "green" },
             { name: "Full Stack", color: "green" }
