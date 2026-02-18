@@ -598,6 +598,9 @@ nav a:hover {
   color: #1f2937;
   text-align: left;
   box-shadow: 0 18px 38px -30px rgba(30, 64, 175, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 .project-top-row {
@@ -605,7 +608,7 @@ nav a:hover {
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .project-tag-group {
@@ -656,15 +659,16 @@ nav a:hover {
 }
 
 .project-summary {
-  margin-top: 1.2rem;
+  margin-top: 0;
   color: #334155;
   font-size: 1.03rem;
   line-height: 1.8;
-  max-width: 97%;
+  max-width: 100%;
 }
 
 .project-spotlight {
-  margin-top: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
   padding-left: 1rem;
   border-left: 2px solid #cbd8f5;
   color: #64748b;
@@ -682,16 +686,25 @@ nav a:hover {
 }
 
 .project-main-grid {
-  margin-top: 1.6rem;
+  margin-top: 0.2rem;
   display: grid;
   grid-template-columns: 1fr 0.9fr;
   gap: 2rem;
 }
 
+.project-subsection {
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
 .project-subsection h4 {
   font-size: 1.2rem;
   color: #1f2937;
-  margin-bottom: 1rem;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -711,6 +724,7 @@ nav a:hover {
 
 .feature-list {
   list-style: none;
+  margin: 0;
   padding: 0;
 }
 
@@ -740,14 +754,41 @@ nav a:hover {
   gap: 0.68rem;
 }
 
+.project-stack-groups {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  gap: 0.9rem;
+}
+
+.stack-group {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  align-items: start;
+  gap: 0.7rem;
+}
+
+.stack-group-title {
+  margin: 0.36rem 0 0;
+  color: #5b6c8f;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stack-group .project-stack-wrap {
+  gap: 0.5rem;
+}
+
 .stack-pill {
-  padding: 0.5rem 1rem;
+  padding: 0.44rem 0.8rem;
   border-radius: 12px;
   border: 1px solid #cfdbf4;
   background: #f4f8ff;
   color: #35518a;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 
 .card-footer {
@@ -1074,6 +1115,16 @@ footer {
     gap: 1.4rem;
   }
 
+  .stack-group {
+    grid-template-columns: 1fr;
+    gap: 0.36rem;
+  }
+
+  .stack-group-title {
+    margin-top: 0;
+    font-size: 0.74rem;
+  }
+
   .project-summary {
     font-size: 0.96rem;
   }
@@ -1258,202 +1309,583 @@ footer {
 }
 
 
-/* 인쇄 스타일 (PDF 변환용) - 웹 디자인 유지 + 가로 모드 최적화 + 여백 최소화 */
+/* 인쇄 스타일 (PDF 저장용) */
 @media print {
-
-  /* 가로 모드 설정 및 여백 최소화 */
   @page {
-    size: landscape;
-    margin: 0;
-    /* 페이지 기본 여백 제거 */
+    size: auto;
+    margin: 12mm;
   }
 
-  /* 전체 내용을 축소하되 꽉 차게 배치 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
   body {
-    zoom: 0.8;
-    /* 배율 약간 확대 (0.75 -> 0.8) */
-    margin: 1cm;
-    /* 내용물과 가장자리 사이 최소 여백 */
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    background-color: var(--bg-main) !important;
-    color: var(--text-main) !important;
     width: auto !important;
-    min-width: 1024px !important;
-  }
-
-  /* 섹션 위아래 여백 줄이기 */
-  section {
-    padding: 1rem 0 !important;
-  }
-
-  /* 헤더 표시 (절대 위치) */
-  header {
-    display: block !important;
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-shadow: none !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-  }
-
-  /* 히어로 섹션 - 웹과 동일한 가로 배치 강제 (2단 레이아웃) */
-  .hero-section {
-    padding-top: 60px !important;
-    padding-bottom: 2rem !important;
-    display: flex !important;
-    flex-direction: row !important;
-    /* 가로 배치 강제 */
-    justify-content: space-between !important;
-    /* 양쪽 정렬 */
-    align-items: center !important;
-    /* 수직 중앙 정렬 */
-    gap: 4rem !important;
-    /* 사이 간격 늘림 */
-    text-align: left !important;
-    width: 100% !important;
-  }
-
-  .hero-content {
-    flex: 1 !important;
-    /* 남은 공간 차지 */
-    min-width: 0;
-    /* Flexbox 오버플로우 방지 */
-  }
-
-  .hero-content h1 {
-    font-size: 3rem !important;
-    /* 제목 크기 키움 */
-    margin-bottom: 1.5rem !important;
-    line-height: 1.2 !important;
+    min-width: 0 !important;
+    background: #fff !important;
     color: var(--text-main) !important;
   }
 
-  .hero-desc {
-    font-size: 1.1rem !important;
-    /* 본문 크기 키움 */
-    line-height: 1.6 !important;
-    margin-bottom: 2rem !important;
-    max-width: none !important;
-    /* 너비 제한 해제 */
-  }
-
-  .hero-actions {
-    display: flex !important;
-    gap: 1rem !important;
-  }
-
-  /* 버튼 강제 표시 및 스타일링 */
-  .btn-primary {
-    background-color: #3b82f6 !important;
-    color: white !important;
-    border: none !important;
-    padding: 0.8rem 1.8rem !important;
-    border-radius: 8px !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .hero-image {
-    display: block !important;
-    flex: 0 0 45% !important;
-    /* 오른쪽 45% 고정 (이미지 영역) */
-    max-width: 550px !important;
-    /* 이미지 최대 크기 대폭 상향 */
+  body {
     margin: 0 !important;
   }
 
-  .hero-image img {
-    width: 100% !important;
+  .bg-gradient-blur,
+  .hero-scroll,
+  .readme-modal-overlay,
+  .readme-btn,
+  .nav-icons {
+    display: none !important;
+  }
+
+  header {
+    position: static !important;
+    background: transparent !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .nav {
     height: auto !important;
-    border-radius: 24px !important;
-    /* 둥근 모서리 */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
-    transform: none !important;
+    padding: 0.35rem 0 0.6rem !important;
   }
 
-  /* 섹션 내부 끊김 방지 */
-  section,
-  .section-center,
-  #about,
-  #skills,
-  #projects {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
+  nav {
+    display: none !important;
   }
 
-  /* 제목 여백 줄이기 */
+  .container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  section {
+    padding: 1.1rem 0 !important;
+  }
+
   .section-title {
-    margin-bottom: 0.5rem !important;
+    font-size: 1.7rem !important;
+    margin-bottom: 0.7rem !important;
     page-break-after: avoid !important;
     break-after: avoid !important;
   }
 
-  .about-info-grid {
-    padding: 1rem 0 !important;
+  .hero-section {
+    padding-top: 0.8rem !important;
+    padding-bottom: 1rem !important;
   }
 
-  /* 텍스트 짤림 방지 */
-  .info-value,
-  .project-title,
-  .tech-badge {
-    white-space: nowrap;
+  .hero-panel {
+    padding: 0 !important;
   }
 
-  /* 카드 스타일 복원 */
-  .info-item,
-  .skills-container-new,
-  .project-card,
-  .project-card.detail-card {
-    box-shadow: var(--shadow-card) !important;
-    border: none !important;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    background: var(--bg-white) !important;
+  .hero-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 
-  .tech-badge {
-    border: none !important;
-    color: white !important;
+  .hero-name {
+    margin-top: 0 !important;
+    font-size: clamp(2.4rem, 8vw, 3.6rem) !important;
   }
 
-  .bg-gradient-blur {
-    display: block !important;
-    opacity: 0.5;
+  .hero-role {
+    margin-top: 0.5rem !important;
+    font-size: clamp(1.35rem, 4.2vw, 2rem) !important;
   }
 
-  /* 그리드 레이아웃 유지 */
-  .about-info-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1.5rem !important;
-    /* 간격 약간 축소 */
+  .hero-desc {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    max-width: none !important;
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
   }
 
-  .project-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 1.5rem !important;
-    /* 간격 약간 축소 */
-  }
-
-  .readme-modal-overlay,
-  .readme-btn {
+  .hero-actions {
     display: none !important;
   }
 
-  .cta-section {
-    display: block !important;
-    page-break-inside: avoid;
-    padding: 3rem 0 !important;
-    /* CTA 섹션 여백 축소 */
+  .hero-visual {
+    justify-content: flex-start !important;
   }
 
-  .container {
-    width: 98% !important;
-    /* 좌우 꽉 차게 */
-    max-width: none !important;
-    margin: 0 auto !important;
+  .hero-visual img {
+    width: min(100%, 380px) !important;
+    box-shadow: none !important;
+  }
+
+  .about-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.9rem !important;
+    padding: 0.8rem 0 !important;
+  }
+
+  .info-item,
+  .skills-container-new,
+  .project-card.detail-card,
+  .cta-section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    box-shadow: none !important;
+  }
+
+  .skills-container-new {
+    padding: 1.4rem !important;
+    border: 1px solid var(--border-light) !important;
+  }
+
+  .skill-category-row {
+    gap: 1rem !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .category-header {
+    width: 150px !important;
+  }
+
+  .project-grid,
+  .project-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .project-card.detail-card {
+    padding: 1.2rem !important;
+    border: 1px solid var(--border-light) !important;
+  }
+
+  .card-footer {
+    margin-top: 1rem !important;
+    padding-top: 1rem !important;
+  }
+
+  .cta-section {
+    padding: 1.2rem 0 !important;
+  }
+
+  .info-value,
+  .project-title,
+  .tech-badge {
+    white-space: normal !important;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+
+  /* 균형 압축 모드: ?print=compact */
+  body.print-compact {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+  }
+
+  body.print-compact section {
+    padding: 0.65rem 0 !important;
+  }
+
+  body.print-compact .section-title {
+    font-size: 1.35rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  body.print-compact .hero-name {
+    font-size: clamp(1.8rem, 5.4vw, 2.5rem) !important;
+  }
+
+  body.print-compact .hero-role {
+    font-size: clamp(1rem, 3vw, 1.35rem) !important;
+    margin-top: 0.2rem !important;
+  }
+
+  body.print-compact .hero-desc {
+    font-size: 0.85rem !important;
+    margin-top: 0.45rem !important;
+    margin-bottom: 0.55rem !important;
+    line-height: 1.4 !important;
+  }
+
+  body.print-compact .hero-visual img {
+    width: min(100%, 250px) !important;
+  }
+
+  body.print-compact .about-info-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.45rem !important;
+    padding: 0.35rem 0 !important;
+  }
+
+  body.print-compact .info-item,
+  body.print-compact .skills-container-new,
+  body.print-compact .project-card.detail-card {
+    padding: 0.7rem !important;
+  }
+
+  body.print-compact .skill-category-row {
+    gap: 0.65rem !important;
+    margin-bottom: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+  }
+
+  body.print-compact .category-header {
+    width: 118px !important;
+  }
+
+  body.print-compact .category-label {
+    font-size: 1rem !important;
+  }
+
+  body.print-compact .tech-badge,
+  body.print-compact .stack-pill {
+    font-size: 0.72rem !important;
+    padding: 0.24rem 0.45rem !important;
+    border-radius: 8px !important;
+  }
+
+  body.print-compact .project-title {
+    font-size: 1.15rem !important;
+  }
+
+  body.print-compact .project-duration,
+  body.print-compact .project-summary,
+  body.print-compact .project-spotlight,
+  body.print-compact .feature-list li {
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+  }
+
+  body.print-compact .feature-list li {
+    margin-bottom: 0.35rem !important;
+  }
+
+  body.print-compact .project-subsection h4 {
+    font-size: 0.95rem !important;
+  }
+
+  body.print-compact .project-main-grid {
+    gap: 0.6rem !important;
+  }
+
+  body.print-compact .project-spotlight,
+  body.print-compact .card-footer,
+  body.print-compact .cta-section,
+  body.print-compact footer {
+    display: none !important;
+  }
+
+  /* 거의 1페이지 강압축 모드: ?print=compact-strong */
+  body.print-compact.print-compact-strong {
+    font-size: 11.5px !important;
+    line-height: 1.25 !important;
+  }
+
+  body.print-compact.print-compact-strong header,
+  body.print-compact.print-compact-strong .hero-visual,
+  body.print-compact.print-compact-strong .project-top-row {
+    display: none !important;
+  }
+
+  body.print-compact.print-compact-strong .hero-section {
+    padding-top: 0 !important;
+  }
+
+  body.print-compact.print-compact-strong section {
+    padding: 0.38rem 0 !important;
+  }
+
+  body.print-compact.print-compact-strong .section-title {
+    font-size: 1.08rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  body.print-compact.print-compact-strong .hero-name {
+    font-size: 1.55rem !important;
+  }
+
+  body.print-compact.print-compact-strong .hero-role {
+    font-size: 0.88rem !important;
+    margin-top: 0.1rem !important;
+  }
+
+  body.print-compact.print-compact-strong .hero-desc {
+    font-size: 0.72rem !important;
+    margin-top: 0.2rem !important;
+    margin-bottom: 0.25rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.print-compact.print-compact-strong .about-info-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0.28rem !important;
+    padding: 0.2rem 0 !important;
+  }
+
+  body.print-compact.print-compact-strong .info-item,
+  body.print-compact.print-compact-strong .skills-container-new,
+  body.print-compact.print-compact-strong .project-card.detail-card {
+    padding: 0.45rem !important;
+    border-radius: 10px !important;
+  }
+
+  body.print-compact.print-compact-strong .info-item {
+    gap: 0.5rem !important;
+  }
+
+  body.print-compact.print-compact-strong .info-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.9rem !important;
+  }
+
+  body.print-compact.print-compact-strong .info-label {
+    font-size: 0.62rem !important;
+    margin-bottom: 0.12rem !important;
+  }
+
+  body.print-compact.print-compact-strong .info-value {
+    font-size: 0.72rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.print-compact.print-compact-strong .skill-category-row {
+    gap: 0.45rem !important;
+    margin-bottom: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+
+  body.print-compact.print-compact-strong .category-header {
+    width: 88px !important;
+    gap: 0.35rem !important;
+  }
+
+  body.print-compact.print-compact-strong .category-icon-box {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  body.print-compact.print-compact-strong .category-icon-box i {
+    font-size: 0.82rem !important;
+  }
+
+  body.print-compact.print-compact-strong .category-label {
+    font-size: 0.76rem !important;
+  }
+
+  body.print-compact.print-compact-strong .tech-badge,
+  body.print-compact.print-compact-strong .stack-pill {
+    font-size: 0.62rem !important;
+    padding: 0.15rem 0.3rem !important;
+    border-radius: 6px !important;
+  }
+
+  body.print-compact.print-compact-strong .project-card.detail-card {
+    gap: 0.3rem !important;
+  }
+
+  body.print-compact.print-compact-strong .project-title-row {
+    gap: 0.3rem !important;
+  }
+
+  body.print-compact.print-compact-strong .project-title {
+    font-size: 0.92rem !important;
+    line-height: 1.15 !important;
+  }
+
+  body.print-compact.print-compact-strong .project-duration,
+  body.print-compact.print-compact-strong .project-summary,
+  body.print-compact.print-compact-strong .feature-list li,
+  body.print-compact.print-compact-strong .stack-group-title {
+    font-size: 0.66rem !important;
+    line-height: 1.2 !important;
+  }
+
+  body.print-compact.print-compact-strong .project-summary {
+    display: none !important;
+  }
+
+  body.print-compact.print-compact-strong .feature-list li {
+    margin-bottom: 0.2rem !important;
+    padding-left: 0.65rem !important;
+  }
+
+  body.print-compact.print-compact-strong .feature-list li::before {
+    width: 0.24rem !important;
+    height: 0.24rem !important;
+    top: 0.42rem !important;
+  }
+
+  body.print-compact.print-compact-strong .project-subsection {
+    gap: 0.25rem !important;
+  }
+
+  body.print-compact.print-compact-strong .project-subsection h4 {
+    font-size: 0.76rem !important;
+    gap: 0.35rem !important;
+  }
+
+  body.print-compact.print-compact-strong .project-subsection h4 i {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 0.6rem !important;
+  }
+
+  body.print-compact.print-compact-strong .project-main-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.4rem !important;
+  }
+
+  /* compact-strong 노출 기준: 기능 5개, 스택 6그룹 */
+  body.print-compact.print-compact-strong .feature-list li:nth-child(n+6),
+  body.print-compact.print-compact-strong .stack-group:nth-child(n+7) {
+    display: none !important;
+  }
+
+  /* 정보 유지형 경량 압축 모드: ?print=compact-lite */
+  body.print-compact-lite {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+
+  body.print-compact-lite section {
+    padding: 0.95rem 0 !important;
+  }
+
+  body.print-compact-lite .section-title {
+    font-size: 1.55rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  body.print-compact-lite .hero-layout {
+    grid-template-columns: 1fr 0.9fr !important;
+    gap: 1rem !important;
+  }
+
+  body.print-compact-lite .hero-actions {
+    display: flex !important;
+  }
+
+  body.print-compact-lite .hero-visual {
+    justify-content: center !important;
+  }
+
+  body.print-compact-lite .hero-visual img {
+    width: min(100%, 300px) !important;
+  }
+
+  body.print-compact-lite .about-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.7rem !important;
+    padding: 0.55rem 0 !important;
+  }
+
+  body.print-compact-lite .skills-container-new {
+    padding: 1rem !important;
+  }
+
+  body.print-compact-lite .skill-category-row {
+    gap: 0.8rem !important;
+    margin-bottom: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+  }
+
+  body.print-compact-lite .category-header {
+    width: 135px !important;
+  }
+
+  body.print-compact-lite .tech-badge,
+  body.print-compact-lite .stack-pill {
+    font-size: 0.8rem !important;
+    padding: 0.3rem 0.55rem !important;
+  }
+
+  body.print-compact-lite .project-card.detail-card {
+    padding: 1rem !important;
+  }
+
+  body.print-compact-lite .project-title {
+    font-size: 1.08rem !important;
+  }
+
+  body.print-compact-lite .project-duration,
+  body.print-compact-lite .project-summary,
+  body.print-compact-lite .project-spotlight,
+  body.print-compact-lite .feature-list li {
+    font-size: 0.86rem !important;
+    line-height: 1.4 !important;
+  }
+
+  body.print-compact-lite .project-main-grid {
+    gap: 0.8rem !important;
+  }
+
+  /* 색상 유지 우선 모드: ?print=color */
+  body.print-color {
+    background: var(--bg-main) !important;
+  }
+
+  body.print-color .bg-gradient-blur {
+    display: block !important;
+    opacity: 0.35 !important;
+  }
+
+  body.print-color header {
+    background: rgba(255, 255, 255, 0.92) !important;
+  }
+
+  body.print-color .hero-layout {
+    grid-template-columns: 1.03fr 1fr !important;
+    gap: 1.6rem !important;
+  }
+
+  body.print-color .hero-actions {
+    display: flex !important;
+  }
+
+  body.print-color .hero-visual {
+    justify-content: center !important;
+  }
+
+  body.print-color .hero-visual img {
+    width: min(100%, 420px) !important;
+    box-shadow: 0 18px 30px -22px rgba(15, 23, 42, 0.5) !important;
+  }
+
+  body.print-color .about-info-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  body.print-color .skills-container-new {
+    background: #fff !important;
+    box-shadow: var(--shadow-soft) !important;
+  }
+
+  body.print-color .project-main-grid {
+    grid-template-columns: 1fr 0.9fr !important;
+    gap: 1.4rem !important;
+  }
+
+  body.print-color .project-card.detail-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f5f8ff 100%) !important;
+    box-shadow: 0 18px 38px -30px rgba(30, 64, 175, 0.28) !important;
+  }
+
+  body.print-color .card-link-light {
+    background: #3b82f6 !important;
+    color: #fff !important;
+  }
+
+  body.print-color .card-link-dark {
+    background: #e9f0ff !important;
+    color: #2f4e93 !important;
+  }
+
+  body.print-color .cta-section {
+    padding: 1.8rem 0 !important;
   }
 }

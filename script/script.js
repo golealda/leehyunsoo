@@ -14,6 +14,52 @@ function splitDescription(description = '') {
   };
 }
 
+function groupTechStack(techStack = []) {
+  const categories = ["Backend", "Frontend", "AI", "Database", "Infrastructure", "Monitoring", "Tools", "Build"];
+  const groups = new Map();
+
+  categories.forEach(category => groups.set(category, []));
+  groups.set("Other", []);
+
+  techStack.forEach(item => {
+    const matchedCategory = categories.find(category => item.startsWith(`${category} `));
+    if (matchedCategory) {
+      groups.get(matchedCategory).push(item.slice(matchedCategory.length + 1).trim());
+      return;
+    }
+    groups.get("Other").push(item);
+  });
+
+  return Array.from(groups.entries())
+    .filter(([, values]) => values.length > 0)
+    .map(([category, values]) => ({ category, values }));
+}
+
+function applyPrintModeFromQuery() {
+  const mode = new URLSearchParams(window.location.search).get('print');
+
+  document.body.classList.remove('print-compact', 'print-compact-strong', 'print-compact-lite', 'print-color');
+
+  if (mode === 'compact') {
+    document.body.classList.add('print-compact');
+    return;
+  }
+
+  if (mode === 'compact-strong') {
+    document.body.classList.add('print-compact', 'print-compact-strong');
+    return;
+  }
+
+  if (mode === 'compact-lite') {
+    document.body.classList.add('print-compact-lite');
+    return;
+  }
+
+  if (mode === 'color') {
+    document.body.classList.add('print-color');
+  }
+}
+
 function renderProjects() {
   const grid = document.querySelector('.project-grid');
   if (!grid) return;
@@ -23,6 +69,8 @@ function renderProjects() {
     const summary = project.summary || desc.intro;
     const spotlight = project.spotlight || desc.detail || `${project.title}에서 실제 사용자 문제를 해결하기 위해 기획부터 구현까지 진행했습니다.`;
     const techStack = project.techStack || project.tags.map(tag => tag.name);
+    const techStackGroups = project.techStack ? groupTechStack(project.techStack) : null;
+    const aiAssist = project.aiAssist || [];
 
     return `
       <article class="project-card detail-card">
@@ -54,11 +102,39 @@ function renderProjects() {
 
           <section class="project-subsection">
             <h4><i class="fas fa-screwdriver-wrench"></i> 기술 스택</h4>
-            <div class="project-stack-wrap">
-              ${techStack.map(tech => `<span class="stack-pill">${tech}</span>`).join('')}
-            </div>
+            ${techStackGroups
+              ? `
+                <div class="project-stack-groups">
+                  ${techStackGroups.map(group => `
+                    <div class="stack-group">
+                      <p class="stack-group-title">${group.category}</p>
+                      <div class="project-stack-wrap">
+                        ${group.values.map(tech => `<span class="stack-pill">${tech}</span>`).join('')}
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              `
+              : `
+                <div class="project-stack-wrap">
+                  ${techStack.map(tech => `<span class="stack-pill">${tech}</span>`).join('')}
+                </div>
+              `
+            }
           </section>
         </div>
+
+        ${aiAssist.length
+          ? `
+            <section class="project-subsection">
+              <h4><i class="fas fa-robot"></i> AI 활용</h4>
+              <div class="project-stack-wrap">
+                ${aiAssist.map(tool => `<span class="stack-pill">${tool}</span>`).join('')}
+              </div>
+            </section>
+          `
+          : ''
+        }
 
         <div class="card-footer">
           <a href="${project.repoConfig.url}" class="card-link card-link-light" target="_blank" rel="noopener noreferrer">
@@ -133,6 +209,8 @@ window.closeReadme = function () {
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
+  applyPrintModeFromQuery();
+
   // 프로젝트 렌더링
   renderProjects();
 
