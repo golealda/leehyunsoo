@@ -1,7 +1,7 @@
 const projects = [
     {
         id: 1,
-        title: "Speech-To-Sign-Translator : 실시간 음성-수화 번역기",
+        title: "실시간 음성-수화 번역기 (도와조)",
         tags: [
             { name: "Accessibility", color: "blue" },
             { name: "STT/TTS", color: "blue" },
@@ -30,8 +30,7 @@ const projects = [
             "Tools GitHub"
         ],
         aiAssist: [
-            "ChatGPT (기능 아이디어 정리)",
-            "GitHub Copilot (반복 코드 작성 보조)"
+            "지피티 (기능 아이디어 정리)"
         ],
         repoConfig: {
             path: "DoWaJo-KW/Speech-To-Sign-Translator",
@@ -41,7 +40,7 @@ const projects = [
     },
     {
         id: 2,
-        title: "KW-Space : Marker 기반 AR 공간정보시스템",
+        title: "Marker 기반 AR 공간정보시스템 (KW-Space)",
         tags: [
             { name: "Unity", color: "green" },
             { name: "AR Foundation", color: "green" },
@@ -68,8 +67,7 @@ const projects = [
             "Tools AR Prototype"
         ],
         aiAssist: [
-            "ChatGPT (기능 설계/문서 정리)",
-            "GitHub Copilot (스크립트 작성 보조)"
+            "지피티 (기능 설계/문서 정리)"
         ],
         repoConfig: {
             path: "WHCC-KW/KW-Space",
@@ -79,7 +77,7 @@ const projects = [
     },
     {
         id: 3,
-        title: "BLE 기반 실시간 감지 및 화면 차단 시스템 (BRDSB)",
+        title: "BLE 기반 실시간 감지 및 화면 차단 시스템 (팔만대장벽)",
         tags: [
             { name: "Security", color: "blue" },
             { name: "BLE", color: "blue" },
@@ -111,8 +109,7 @@ const projects = [
             "Tools GitHub"
         ],
         aiAssist: [
-            "ChatGPT (트러블슈팅/실험 로그 정리)",
-            "GitHub Copilot (Python 스크립트 보조)"
+            "지피티 (트러블슈팅/실험 로그 정리)"
         ],
         repoConfig: {
             path: "4-1-capstone-palman/BLEsniffing",
@@ -122,7 +119,7 @@ const projects = [
     },
     {
         id: 4,
-        title: "오늘! 뭐랑? : 술-안주 페어링 커뮤니티 & 추천 서비스",
+        title: "술-안주 페어링 커뮤니티 & 추천 서비스 (오늘! 뭐랑?)",
         tags: [
             { name: "Web Service", color: "purple" },
             { name: "Recommender", color: "purple" },
@@ -155,8 +152,7 @@ const projects = [
             "Tools Figma + ERDCloud"
         ],
         aiAssist: [
-            "ChatGPT (쿼리/도메인 로직 검토)",
-            "GitHub Copilot (API 코드 작성 보조)"
+            "클로드 코드 (쿼리/도메인 로직 검토 및 API 코드 작성 보조)"
         ],
         repoConfig: {
             path: "Youth-Leap-Squad/EatToday_store",
@@ -200,8 +196,8 @@ const projects = [
             "Tools Figma"
         ],
         aiAssist: [
-            "ChatGPT (요구사항 정리/버그 분석)",
-            "GitHub Copilot (컴포넌트/서비스 코드 보조)"
+            "제미나이 (요구사항 정리/버그 분석)",
+            "클로드 코드 (컴포넌트/서비스 코드 보조)"
         ],
         repoConfig: {
             path: "Cal-Mate/be19-4th-Cal-Mate-Dev",
@@ -249,8 +245,9 @@ const projects = [
             "Tools Postman"
         ],
         aiAssist: [
-            "ChatGPT (기획 문안/요구사항 문서 정리)",
-            "GitHub Copilot (리팩토링/반복 코드 보조)"
+            "지피티 (기획 문안/요구사항 문서 정리)",
+            "제미나이 (리팩토링/반복 코드 보조)",
+            "지피티를 활용한 코드 리뷰, 코드 검사"
         ],
         repoConfig: {
             path: "golealda/be19-final-A-Team",
