@@ -254,5 +254,46 @@ const projects = [
             url: "https://github.com/golealda/be19-final-A-Team"
         },
         duration: "2025.11 ~ 2026.01"
+    },
+    {
+        id: 7,
+        title: "부모-자녀 연동형 퀘스트 보상 플랫폼 (YumYumQuest)",
+        tags: [
+            { name: "Gamification", color: "orange" },
+            { name: "Parent-Child System", color: "green" },
+            { name: "Firebase", color: "blue" }
+        ],
+        description: `
+        아이의 식습관 형성을 게임처럼 재미있게 유도하는 보호자-연동형 식습관 개선 플랫폼입니다.
+        단순 기록 앱이 아니라 퀘스트, 포인트, 보상 시스템을 통해 아이가 스스로 참여하도록 설계했습니다.
+        <br><br>
+        <b>핵심 구현 포인트:</b> 보호자 계정과 아이 프로필을 분리한 구조를 설계하여
+        보호자가 승인·관리하고, 아이는 퀘스트 기반으로 활동하는 양방향 참여형 시스템을 구현했습니다.
+        Firebase 기반 인증 및 실시간 데이터 구조를 활용해 확장 가능한 구조로 설계했습니다.
+    `,
+        features: [
+            "부모 계정 + 아이 프로필 구조 설계",
+            "아이 초대 코드 기반 로그인 및 보호자 승인 시스템",
+            "식습관 퀘스트 생성 및 완료 체크 기능",
+            "포인트 적립 및 보상 시스템 (마일스톤 보상 구조 포함)",
+            "실시간 데이터 동기화 (Firebase)",
+            "테마/아이템 구매 구조 설계 (구독이 아닌 개별 구매 방식)"
+        ],
+        techStack: [
+            "Frontend React Native",
+            "Backend Firebase",
+            "Database Firestore (NoSQL)",
+            "Authentication Firebase Auth",
+            "Tools GitHub"
+        ],
+        aiAssist: [
+            "ChatGPT (기획 구조 설계 및 DB 모델링 정리)",
+            "AI 기반 UX 흐름 개선 아이디어 도출"
+        ],
+        repoConfig: {
+            path: "golealda/YumYumQuest",
+            url: "https://github.com/golealda/YumYumQuest"
+        },
+        duration: "2026.01 ~ 진행중"
     }
 ];
