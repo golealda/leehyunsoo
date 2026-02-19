@@ -1309,75 +1309,70 @@ footer {
 }
 
 
-/* 인쇄 스타일 (PDF 저장용) */
+
+/* 인쇄 스타일 (PDF 저장용) - "Natural & Professional" */
 @media print {
   @page {
-    size: auto;
-    margin: 12mm;
+    size: A4;
+    margin: 15mm;
   }
 
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  html,
-  body {
-    width: auto !important;
-    min-width: 0 !important;
-    background: #fff !important;
-    color: var(--text-main) !important;
+  html {
+    font-size: 14px; /* 인쇄 시 가독성을 위해 기본 폰트 크기 조정 */
   }
 
   body {
-    margin: 0 !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #111;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
+  /* 1. 불필요한 요소 숨김 */
   .bg-gradient-blur,
   .hero-scroll,
   .readme-modal-overlay,
-  .readme-btn,
-  .nav-icons {
+  .nav-icons,
+  .hero-actions,
+  .cta-section, /* 하단 Contact 섹션은 상단 정보와 중복되므로 숨김 */
+  nav,
+  .modal-header,
+  .close-modal-btn {
     display: none !important;
+  }
+
+  /* 2. 레이아웃 재정의 */
+  .container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  section {
+    padding: 2rem 0 !important;
+    page-break-inside: avoid; /* 섹션 중간에서 잘리지 않도록 */
   }
 
   header {
     position: static !important;
     background: transparent !important;
-    border-bottom: 1px solid var(--border-light) !important;
+    border-bottom: none !important;
     backdrop-filter: none !important;
-    box-shadow: none !important;
-  }
-
-  .nav {
     height: auto !important;
-    padding: 0.35rem 0 0.6rem !important;
+    padding: 0 0 1rem 0 !important;
+    display: none !important; /* 헤더 네비게이션도 숨기고 본문에 집중 */
   }
 
-  nav {
-    display: none !important;
-  }
-
-  .container {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-  }
-
-  section {
-    padding: 1.1rem 0 !important;
-  }
-
-  .section-title {
-    font-size: 1.7rem !important;
-    margin-bottom: 0.7rem !important;
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-  }
-
+  /* 3. Hero Section (이력서 헤더 스타일) */
   .hero-section {
-    padding-top: 0.8rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 2rem !important;
+    border-bottom: 2px solid #333; /* 섹션 구분선 */
+    margin-bottom: 2rem !important;
   }
 
   .hero-panel {
@@ -1385,507 +1380,175 @@ footer {
   }
 
   .hero-layout {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
+    display: grid !important;
+    grid-template-columns: 1.6fr 1fr !important; /* 텍스트 : 이미지 비율 */
+    gap: 2rem !important;
+    align-items: center !important;
+  }
+
+  .hero-left {
+    text-align: left !important;
   }
 
   .hero-name {
+    font-size: 3rem !important;
+    color: #000 !important;
     margin-top: 0 !important;
-    font-size: clamp(2.4rem, 8vw, 3.6rem) !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .hero-role {
-    margin-top: 0.5rem !important;
-    font-size: clamp(1.35rem, 4.2vw, 2rem) !important;
+    font-size: 1.4rem !important;
+    color: #555 !important;
+    font-weight: 600 !important;
   }
 
   .hero-desc {
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
-    max-width: none !important;
     font-size: 1rem !important;
-    line-height: 1.55 !important;
-  }
-
-  .hero-actions {
-    display: none !important;
+    color: #444 !important;
+    margin-top: 1rem !important;
+    max-width: none !important;
   }
 
   .hero-visual {
-    justify-content: flex-start !important;
+    display: flex !important;
+    justify-content: flex-end !important;
   }
 
   .hero-visual img {
-    width: min(100%, 380px) !important;
+    width: 200px !important; /* 이미지 크기 최적화 */
+    height: auto !important;
+    border-radius: 12px !important;
     box-shadow: none !important;
+    border: 1px solid #eee !important;
   }
 
+  /* 4. About Info Grid */
   .about-info-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 0.9rem !important;
-    padding: 0.8rem 0 !important;
-  }
-
-  .info-item,
-  .skills-container-new,
-  .project-card.detail-card,
-  .cta-section {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    padding: 0 !important;
     box-shadow: none !important;
   }
 
+  .info-item {
+    padding: 0.8rem !important;
+    border: 1px solid #eee !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+    page-break-inside: avoid;
+  }
+
+  .info-icon {
+    background: #f3f4f6 !important; /* 인쇄 시 배경 유지 */
+    color: #333 !important;
+  }
+
+  /* 5. Skills Section */
   .skills-container-new {
-    padding: 1.4rem !important;
-    border: 1px solid var(--border-light) !important;
+    border: 1px solid #1f2937 !important; /* 진하게 테두리 */
+    box-shadow: none !important;
+    padding: 1.5rem !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    page-break-inside: avoid;
   }
 
   .skill-category-row {
-    gap: 1rem !important;
-    margin-bottom: 1rem !important;
-    padding-bottom: 1rem !important;
+    border-bottom: 1px solid #eee !important;
   }
 
-  .category-header {
-    width: 150px !important;
+  .tech-badge {
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+    print-color-adjust: exact !important;
   }
 
-  .project-grid,
-  .project-main-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
+  /* 6. Projects Section */
+  .section-title {
+    font-size: 1.8rem !important;
+    color: #000 !important;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .project-grid {
+    display: block !important; /* 블록으로 변경하여 순차 배치 */
   }
 
   .project-card.detail-card {
-    padding: 1.2rem !important;
-    border: 1px solid var(--border-light) !important;
+    margin-bottom: 2rem !important;
+    padding: 1.5rem !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    page-break-inside: avoid; /* 카드 내부에서 페이지 잘림 방지 */
+    break-inside: avoid;
+  }
+
+  .project-title {
+    font-size: 1.4rem !important;
+    color: #000 !important;
   }
 
   .card-footer {
+    border-top: 1px solid #eee !important;
     margin-top: 1rem !important;
     padding-top: 1rem !important;
-  }
-
-  .cta-section {
-    padding: 1.2rem 0 !important;
-  }
-
-  .info-value,
-  .project-title,
-  .tech-badge {
-    white-space: normal !important;
-  }
-
-  a {
-    text-decoration: none !important;
-  }
-
-  /* 균형 압축 모드: ?print=compact */
-  body.print-compact {
-    font-size: 13px !important;
-    line-height: 1.35 !important;
-  }
-
-  body.print-compact section {
-    padding: 0.65rem 0 !important;
-  }
-
-  body.print-compact .section-title {
-    font-size: 1.35rem !important;
-    margin-bottom: 0.45rem !important;
-  }
-
-  body.print-compact .hero-name {
-    font-size: clamp(1.8rem, 5.4vw, 2.5rem) !important;
-  }
-
-  body.print-compact .hero-role {
-    font-size: clamp(1rem, 3vw, 1.35rem) !important;
-    margin-top: 0.2rem !important;
-  }
-
-  body.print-compact .hero-desc {
-    font-size: 0.85rem !important;
-    margin-top: 0.45rem !important;
-    margin-bottom: 0.55rem !important;
-    line-height: 1.4 !important;
-  }
-
-  body.print-compact .hero-visual img {
-    width: min(100%, 250px) !important;
-  }
-
-  body.print-compact .about-info-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 0.45rem !important;
-    padding: 0.35rem 0 !important;
-  }
-
-  body.print-compact .info-item,
-  body.print-compact .skills-container-new,
-  body.print-compact .project-card.detail-card {
-    padding: 0.7rem !important;
-  }
-
-  body.print-compact .skill-category-row {
-    gap: 0.65rem !important;
-    margin-bottom: 0.6rem !important;
-    padding-bottom: 0.6rem !important;
-  }
-
-  body.print-compact .category-header {
-    width: 118px !important;
-  }
-
-  body.print-compact .category-label {
-    font-size: 1rem !important;
-  }
-
-  body.print-compact .tech-badge,
-  body.print-compact .stack-pill {
-    font-size: 0.72rem !important;
-    padding: 0.24rem 0.45rem !important;
-    border-radius: 8px !important;
-  }
-
-  body.print-compact .project-title {
-    font-size: 1.15rem !important;
-  }
-
-  body.print-compact .project-duration,
-  body.print-compact .project-summary,
-  body.print-compact .project-spotlight,
-  body.print-compact .feature-list li {
-    font-size: 0.78rem !important;
-    line-height: 1.35 !important;
-  }
-
-  body.print-compact .feature-list li {
-    margin-bottom: 0.35rem !important;
-  }
-
-  body.print-compact .project-subsection h4 {
-    font-size: 0.95rem !important;
-  }
-
-  body.print-compact .project-main-grid {
-    gap: 0.6rem !important;
-  }
-
-  body.print-compact .project-spotlight,
-  body.print-compact .card-footer,
-  body.print-compact .cta-section,
-  body.print-compact footer {
-    display: none !important;
-  }
-
-  /* 거의 1페이지 강압축 모드: ?print=compact-strong */
-  body.print-compact.print-compact-strong {
-    font-size: 11.5px !important;
-    line-height: 1.25 !important;
-  }
-
-  body.print-compact.print-compact-strong header,
-  body.print-compact.print-compact-strong .hero-visual,
-  body.print-compact.print-compact-strong .project-top-row {
-    display: none !important;
-  }
-
-  body.print-compact.print-compact-strong .hero-section {
-    padding-top: 0 !important;
-  }
-
-  body.print-compact.print-compact-strong section {
-    padding: 0.38rem 0 !important;
-  }
-
-  body.print-compact.print-compact-strong .section-title {
-    font-size: 1.08rem !important;
-    margin-bottom: 0.25rem !important;
-  }
-
-  body.print-compact.print-compact-strong .hero-name {
-    font-size: 1.55rem !important;
-  }
-
-  body.print-compact.print-compact-strong .hero-role {
-    font-size: 0.88rem !important;
-    margin-top: 0.1rem !important;
-  }
-
-  body.print-compact.print-compact-strong .hero-desc {
-    font-size: 0.72rem !important;
-    margin-top: 0.2rem !important;
-    margin-bottom: 0.25rem !important;
-    line-height: 1.2 !important;
-  }
-
-  body.print-compact.print-compact-strong .about-info-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 0.28rem !important;
-    padding: 0.2rem 0 !important;
-  }
-
-  body.print-compact.print-compact-strong .info-item,
-  body.print-compact.print-compact-strong .skills-container-new,
-  body.print-compact.print-compact-strong .project-card.detail-card {
-    padding: 0.45rem !important;
-    border-radius: 10px !important;
-  }
-
-  body.print-compact.print-compact-strong .info-item {
-    gap: 0.5rem !important;
-  }
-
-  body.print-compact.print-compact-strong .info-icon {
-    width: 28px !important;
-    height: 28px !important;
-    font-size: 0.9rem !important;
-  }
-
-  body.print-compact.print-compact-strong .info-label {
-    font-size: 0.62rem !important;
-    margin-bottom: 0.12rem !important;
-  }
-
-  body.print-compact.print-compact-strong .info-value {
-    font-size: 0.72rem !important;
-    line-height: 1.15 !important;
-  }
-
-  body.print-compact.print-compact-strong .skill-category-row {
-    gap: 0.45rem !important;
-    margin-bottom: 0.35rem !important;
-    padding-bottom: 0.35rem !important;
-  }
-
-  body.print-compact.print-compact-strong .category-header {
-    width: 88px !important;
-    gap: 0.35rem !important;
-  }
-
-  body.print-compact.print-compact-strong .category-icon-box {
-    width: 20px !important;
-    height: 20px !important;
-  }
-
-  body.print-compact.print-compact-strong .category-icon-box i {
-    font-size: 0.82rem !important;
-  }
-
-  body.print-compact.print-compact-strong .category-label {
-    font-size: 0.76rem !important;
-  }
-
-  body.print-compact.print-compact-strong .tech-badge,
-  body.print-compact.print-compact-strong .stack-pill {
-    font-size: 0.62rem !important;
-    padding: 0.15rem 0.3rem !important;
-    border-radius: 6px !important;
-  }
-
-  body.print-compact.print-compact-strong .project-card.detail-card {
-    gap: 0.3rem !important;
-  }
-
-  body.print-compact.print-compact-strong .project-title-row {
-    gap: 0.3rem !important;
-  }
-
-  body.print-compact.print-compact-strong .project-title {
-    font-size: 0.92rem !important;
-    line-height: 1.15 !important;
-  }
-
-  body.print-compact.print-compact-strong .project-duration,
-  body.print-compact.print-compact-strong .project-summary,
-  body.print-compact.print-compact-strong .feature-list li,
-  body.print-compact.print-compact-strong .stack-group-title {
-    font-size: 0.66rem !important;
-    line-height: 1.2 !important;
-  }
-
-  body.print-compact.print-compact-strong .project-summary {
-    display: none !important;
-  }
-
-  body.print-compact.print-compact-strong .feature-list li {
-    margin-bottom: 0.2rem !important;
-    padding-left: 0.65rem !important;
-  }
-
-  body.print-compact.print-compact-strong .feature-list li::before {
-    width: 0.24rem !important;
-    height: 0.24rem !important;
-    top: 0.42rem !important;
-  }
-
-  body.print-compact.print-compact-strong .project-subsection {
-    gap: 0.25rem !important;
-  }
-
-  body.print-compact.print-compact-strong .project-subsection h4 {
-    font-size: 0.76rem !important;
-    gap: 0.35rem !important;
-  }
-
-  body.print-compact.print-compact-strong .project-subsection h4 i {
-    width: 20px !important;
-    height: 20px !important;
-    font-size: 0.6rem !important;
-  }
-
-  body.print-compact.print-compact-strong .project-main-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0.4rem !important;
-  }
-
-  /* compact-strong 노출 기준: 기능 5개, 스택 6그룹 */
-  body.print-compact.print-compact-strong .feature-list li:nth-child(n+6),
-  body.print-compact.print-compact-strong .stack-group:nth-child(n+7) {
-    display: none !important;
-  }
-
-  /* 정보 유지형 경량 압축 모드: ?print=compact-lite */
-  body.print-compact-lite {
-    font-size: 14px !important;
-    line-height: 1.45 !important;
-  }
-
-  body.print-compact-lite section {
-    padding: 0.95rem 0 !important;
-  }
-
-  body.print-compact-lite .section-title {
-    font-size: 1.55rem !important;
-    margin-bottom: 0.6rem !important;
-  }
-
-  body.print-compact-lite .hero-layout {
-    grid-template-columns: 1fr 0.9fr !important;
+    display: flex !important;
     gap: 1rem !important;
   }
 
-  body.print-compact-lite .hero-actions {
-    display: flex !important;
-  }
 
-  body.print-compact-lite .hero-visual {
-    justify-content: center !important;
-  }
 
-  body.print-compact-lite .hero-visual img {
-    width: min(100%, 300px) !important;
-  }
-
-  body.print-compact-lite .about-info-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 0.7rem !important;
-    padding: 0.55rem 0 !important;
-  }
-
-  body.print-compact-lite .skills-container-new {
-    padding: 1rem !important;
-  }
-
-  body.print-compact-lite .skill-category-row {
-    gap: 0.8rem !important;
-    margin-bottom: 0.8rem !important;
-    padding-bottom: 0.8rem !important;
-  }
-
-  body.print-compact-lite .category-header {
-    width: 135px !important;
-  }
-
-  body.print-compact-lite .tech-badge,
-  body.print-compact-lite .stack-pill {
+  /* 7. Footer */
+  footer {
+    border-top: 1px solid #ddd !important;
+    margin-top: 2rem !important;
+    padding-top: 1rem !important;
+    color: #666 !important;
     font-size: 0.8rem !important;
-    padding: 0.3rem 0.55rem !important;
   }
 
-  body.print-compact-lite .project-card.detail-card {
-    padding: 1rem !important;
-  }
-
-  body.print-compact-lite .project-title {
-    font-size: 1.08rem !important;
-  }
-
-  body.print-compact-lite .project-duration,
-  body.print-compact-lite .project-summary,
-  body.print-compact-lite .project-spotlight,
-  body.print-compact-lite .feature-list li {
-    font-size: 0.86rem !important;
-    line-height: 1.4 !important;
-  }
-
-  body.print-compact-lite .project-main-grid {
-    gap: 0.8rem !important;
-  }
-
-  /* 색상 유지 우선 모드: ?print=color */
-  body.print-color {
-    background: var(--bg-main) !important;
-  }
-
-  body.print-color .bg-gradient-blur {
+  .footer-print-only {
     display: block !important;
-    opacity: 0.35 !important;
+    margin-top: 5px;
+    font-family: monospace;
+    color: #444;
   }
 
-  body.print-color header {
-    background: rgba(255, 255, 255, 0.92) !important;
+  /* --- 버튼 링크 스타일 (PDF 최적화) --- */
+
+  /* 기본 초기화 */
+  .card-link {
+    display: inline-flex !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-right: 15px !important;
   }
 
-  body.print-color .hero-layout {
-    grid-template-columns: 1.03fr 1fr !important;
-    gap: 1.6rem !important;
+  /* README 버튼(JS 실행)은 인쇄 모드(PDF)에서 작동하지 않으므로 숨김 */
+  .card-link-dark {
+    display: none !important;
   }
 
-  body.print-color .hero-actions {
-    display: flex !important;
+  /* GitHub 버튼을 파란색 밑줄 링크로 변경하여 클릭 가능함을 명확히 함 */
+  .card-link-light {
+    color: #2563eb !important;
+    text-decoration: underline !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
   }
 
-  body.print-color .hero-visual {
-    justify-content: center !important;
-  }
-
-  body.print-color .hero-visual img {
-    width: min(100%, 420px) !important;
-    box-shadow: 0 18px 30px -22px rgba(15, 23, 42, 0.5) !important;
-  }
-
-  body.print-color .about-info-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-
-  body.print-color .skills-container-new {
-    background: #fff !important;
-    box-shadow: var(--shadow-soft) !important;
-  }
-
-  body.print-color .project-main-grid {
-    grid-template-columns: 1fr 0.9fr !important;
-    gap: 1.4rem !important;
-  }
-
-  body.print-color .project-card.detail-card {
-    background: linear-gradient(145deg, #ffffff 0%, #f5f8ff 100%) !important;
-    box-shadow: 0 18px 38px -30px rgba(30, 64, 175, 0.28) !important;
-  }
-
-  body.print-color .card-link-light {
-    background: #3b82f6 !important;
-    color: #fff !important;
-  }
-
-  body.print-color .card-link-dark {
-    background: #e9f0ff !important;
-    color: #2f4e93 !important;
-  }
-
-  body.print-color .cta-section {
-    padding: 1.8rem 0 !important;
+  .card-link-light i {
+    margin-right: 4px;
+    color: inherit !important;
   }
 }
